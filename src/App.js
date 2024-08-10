@@ -6,9 +6,12 @@ import Logo from "./components/Logo/Logo.jsx";
 import bankUsers from "./assets/data/bankUsers.json";
 import Menu from "./components/Menu/Menu.jsx";
 import BudgetApp from "./components/BudgetApp/BudgetApp.jsx";
-import { useState } from 'react';
 import task from "./assets/task-list.json";
 import AddTask from "./components/AddTask.jsx";
+
+//React imports
+import { useState } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 //Routing lesson
 import Login from "./pages/Login.jsx";
@@ -17,7 +20,7 @@ import Home from "./pages/Home.jsx";
 import Transactions from './pages/Transactions.jsx';
 import NotFound from './pages/NotFound.jsx';
 import RootLayout from './layouts/RootLayout.jsx';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+
 
 
 

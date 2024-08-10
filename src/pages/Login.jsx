@@ -54,6 +54,12 @@ export default function Login() {
             return
         }
         // Authentication calls will be made here...
+
+        /* <User employee={bankEmployee} address={address}></User>
+          {bankUsers.map((bankUsers) => {
+            return (
+              <div key={bankUsers.id}>
+                {bankUsers.name} {bankUsers.balance} */
     }
     return (
         <body>
