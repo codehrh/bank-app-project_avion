@@ -11,7 +11,8 @@ import AddTask from "./components/AddTask.jsx";
 
 //React imports
 import { useState } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { createBrowserRouter, BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+
 
 //Routing lesson
 import Login from "./pages/Login.jsx";
@@ -22,7 +23,13 @@ import NotFound from './pages/NotFound.jsx';
 import RootLayout from './layouts/RootLayout.jsx';
 
 
-
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    loader: rootLoader,
+  },
+]);
 
 export default function App() {
   const bankEmployee = {

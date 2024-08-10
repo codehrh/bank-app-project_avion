@@ -13,7 +13,7 @@ export default function Menu() {
         <div className="Menu">
             <BrowserRouter>
                 <Routes>
-                    <Route pathj="/" element={<RootLayout></RootLayout>}>
+                    <Route path="/" element={<RootLayout></RootLayout>}>
                         <Route index element={<Home></Home>}></Route>
                         <Route
                             path="transactions"
