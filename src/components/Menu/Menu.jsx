@@ -6,7 +6,6 @@ import Transactions from '../../pages/Transactions.jsx';
 import NotFound from '../../pages/NotFound.jsx';
 import RootLayout from '../../layouts/RootLayout.jsx';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 export default function Menu() {
     return (

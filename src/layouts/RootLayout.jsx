@@ -6,7 +6,7 @@ function RootLayout() {
         <div className="root-layout">
             <header>
                 <nav>
-                    <NavLink className="item" to="/">
+                    <NavLink className="item" to="/Home">
                         Home
                     </NavLink>
                     <NavLink className="item" to="transactions">
