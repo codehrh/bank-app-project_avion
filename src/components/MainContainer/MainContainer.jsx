@@ -1,6 +1,6 @@
 import SearchBar from "../SearchBar/SearchBar.jsx";
 import Logo from "../Logo/Logo.jsx";
-import Menu from "../Menu/Menu.jsx";
+import RootLayout from "../../layouts/RootLayout.jsx";
 import BudgetApp from "../BudgetApp/BudgetApp.jsx";
 
 export default function MainContainer() {
@@ -16,7 +16,7 @@ export default function MainContainer() {
 
             <div className="mainContainer">
                 <div className="leftContainer">
-                    <Menu></Menu>
+                    <RootLayout></RootLayout>
                 </div>
                 <div className="rightContainer">
                     <BudgetApp></BudgetApp>

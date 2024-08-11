@@ -1,6 +1,9 @@
+import MainContainer from "../components/MainContainer/MainContainer"
 
 export default function Transactions() {
-    return(
-        <div className="Transactions"><h1>Transactions</h1></div>
+    return (
+        <div className="Transactions">
+            <MainContainer></MainContainer>
+        </div>
     )
 }

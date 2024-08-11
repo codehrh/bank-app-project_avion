@@ -15,7 +15,6 @@ function RootLayout() {
                     <NavLink className="item" to="about">
                         About
                     </NavLink>
-
                 </nav>
             </header>
         </div>

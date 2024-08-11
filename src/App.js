@@ -23,30 +23,31 @@ import Home from "./pages/Home.jsx";
 import Transactions from './pages/Transactions.jsx';
 import NotFound from './pages/NotFound.jsx';
 import RootLayout from './layouts/RootLayout.jsx';
+import Menu from './components/Menu/Menu.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Login />,
     errorElement: <NotFound />,
+  },
+  {
+    path: "/Home",
+    element: <Home />,
+    errorElement: <NotFound />,
     children: [
       {
         index: true,
-        element: <Home/>,
+        element: <RootLayout />,
         errorElement: <NotFound />,
       },
       {
         index: true,
-        element: <Transactions/>,
-        errorElement: <NotFound />,
-      },
-      {
-        index: true,
-        element: <Home/>,
+        element: <Transactions />,
         errorElement: <NotFound />,
       },
     ]
-  },
+  }
 ])
 
 export default function App() {
