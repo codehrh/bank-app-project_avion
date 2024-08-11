@@ -3,14 +3,24 @@ import '@fontsource/exo-2';
 import About from "../../pages/About.jsx";
 import Home from "../../pages/Home.jsx";
 import Transactions from '../../pages/Transactions.jsx';
+import Login from "../../pages/Login.jsx";
 import NotFound from '../../pages/NotFound.jsx';
 import RootLayout from '../../layouts/RootLayout.jsx';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, BrowserRouter, Routes, Route } from "react-router-dom";
+
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <Login />,
+        errorElement: <NotFound />
+    },
+])
 
 export default function Menu() {
     return (
         <div className="Menu">
-            <BrowserRouter>
+            <RouterProvider router={router} />
+            {/* <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<RootLayout></RootLayout>}>
                         <Route index element={<Home></Home>}></Route>
@@ -22,7 +32,9 @@ export default function Menu() {
                         <Route path="*" element={<NotFound></NotFound>}></Route>
                     </Route>
                 </Routes>
-            </BrowserRouter>
+            </BrowserRouter> */}
+
+
             {/* <ul className="menuList">
                 <li className="listItem" id="home">Home</li>
                 <li className="listItem" id="addClient">Add Client</li>

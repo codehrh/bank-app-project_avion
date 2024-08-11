@@ -11,7 +11,7 @@ import AddTask from "./components/AddTask.jsx";
 
 //React imports
 import { useState } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, BrowserRouter, Routes, Route } from "react-router-dom";
 
 
 //Routing lesson
@@ -22,86 +22,111 @@ import Transactions from './pages/Transactions.jsx';
 import NotFound from './pages/NotFound.jsx';
 import RootLayout from './layouts/RootLayout.jsx';
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Login />,
+    errorElement: <NotFound />,
+    children: [
+      {
+        index: true,
+        element: <Home/>,
+        errorElement: <NotFound />,
+      },
+      {
+        index: true,
+        element: <Transactions/>,
+        errorElement: <NotFound />,
+      },
+      {
+        index: true,
+        element: <Home/>,
+        errorElement: <NotFound />,
+      },
+    ]
+  },
+])
+
 export default function App() {
-  const bankEmployee = {
-    name: "Yael",
-    email: "spongecola@gmail.com",
-    balance: 10000,
-  };
+//   const bankEmployee = {
+//     name: "Yael",
+//     email: "spongecola@gmail.com",
+//     balance: 10000,
+//   };
 
-  const address = {
-    houseNo: 74,
-    street: "Manila Street",
-    country: "Philippines"
-  }
+//   const address = {
+//     houseNo: 74,
+//     street: "Manila Street",
+//     country: "Philippines"
+//   }
 
-  //useState
+//   //useState
 
-  // array destructuring
-  // [value/variable, function to update the value/variable]
-  // useState can accept different data types (string, number, or array)
-  // right now the useState gets the string from the user input
+//   // array destructuring
+//   // [value/variable, function to update the value/variable]
+//   // useState can accept different data types (string, number, or array)
+//   // right now the useState gets the string from the user input
 
-  const [num1, setNum1] = useState("");
-  const [num2, setNum2] = useState("");
+//   const [num1, setNum1] = useState("");
+//   const [num2, setNum2] = useState("");
 
-  // holder of result
+//   // holder of result
 
-  const [result, setResult] = useState("");
+//   const [result, setResult] = useState("");
 
-  // setNumx mimics
-  // const setNum1 = function () {}
+//   // setNumx mimics
+//   // const setNum1 = function () {}
 
-  // handle the change state of num1
-  const handleNum1Change = (event) => {
-    setNum1(event.target.value);
-    console.log(num1);
-  };
+//   // handle the change state of num1
+//   const handleNum1Change = (event) => {
+//     setNum1(event.target.value);
+//     console.log(num1);
+//   };
 
-  const handleNum2Change = (event) => {
-    setNum2(event.target.value);
-    console.log(num1);
-  };
+//   const handleNum2Change = (event) => {
+//     setNum2(event.target.value);
+//     console.log(num1);
+//   };
 
-  const handleAddition = () => {
-    let add = Number(num1) + Number(num2);
-    setResult(add);
-  }
+//   const handleAddition = () => {
+//     let add = Number(num1) + Number(num2);
+//     setResult(add);
+//   }
 
-  const handleSubtraction = () => {
-    let minus = Number(num1) - Number(num2);
-    setResult(minus);
-  }
+//   const handleSubtraction = () => {
+//     let minus = Number(num1) - Number(num2);
+//     setResult(minus);
+//   }
 
-  const handleMultiplication = () => {
-    let multiply = Number(num1) * Number(num2);
-    setResult(multiply);
-  }
+//   const handleMultiplication = () => {
+//     let multiply = Number(num1) * Number(num2);
+//     setResult(multiply);
+//   }
 
-  const handleDivision = () => {
-    let divide = Number(num1) / Number(num2);
-    setResult(divide);
-  }
+//   const handleDivision = () => {
+//     let divide = Number(num1) / Number(num2);
+//     setResult(divide);
+//   }
 
-  const [datas, setDatas] = useState(task)
-  // datas.push(newData)
-  const handleDatas = (newData) => {
-    // [...prevData] - creates a new array that contains the prev data and newly created task and gives back to data state
-    //spread operator
-    setDatas((prevData) => [...prevData, newData]);
-  };
-
+//   const [datas, setDatas] = useState(task)
+//   // datas.push(newData)
+//   const handleDatas = (newData) => {
+//     // [...prevData] - creates a new array that contains the prev data and newly created task and gives back to data state
+//     //spread operator
+//     setDatas((prevData) => [...prevData, newData]);
+//   };
 
   return (
     <body>
       <div className="App">
-        <BrowserRouter>
+      <RouterProvider router={router} />
+        {/* <BrowserRouter>
           <Routes>
             {/* Default route pointing to Login */}
-            <Route path="/" element={<Navigate to="/login" />} />
+            {/* <Route path="/" element={<Navigate to="/login" />} /> */}
 
             {/* Login page */}
-            <Route path="/login" element={<Login />} />
+            {/* <Route path="/login" element={<Login />} /> */}
 
             {/* Other routes under RootLayout */}
             {/* <Route path="/" element={<RootLayout />}>
@@ -110,8 +135,8 @@ export default function App() {
             <Route path="about" element={<About />} />
             <Route path="*" element={<NotFound />} />
           </Route> */}
-          </Routes>
-        </BrowserRouter>
+          {/* </Routes> */}
+        {/* </BrowserRouter> */}
       </div>
     </body>
   );
