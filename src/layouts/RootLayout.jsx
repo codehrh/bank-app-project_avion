@@ -1,7 +1,7 @@
 import "./RootLayout.css";
 import { NavLink } from "react-router-dom";
 
-function RootLayout() {
+export default function RootLayout() {
     return (
         <div className="root-layout">
             <header>
@@ -9,7 +9,7 @@ function RootLayout() {
                     <NavLink className="item" to="/Home">
                         Home
                     </NavLink>
-                    <NavLink className="item" to="transactions">
+                    <NavLink className="item" to="Transactions">
                         Transaction
                     </NavLink>
                     <NavLink className="item" to="about">
@@ -20,5 +20,3 @@ function RootLayout() {
         </div>
     );
 }
-
-export default RootLayout;

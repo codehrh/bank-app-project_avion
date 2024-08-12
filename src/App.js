@@ -13,7 +13,7 @@ import './App.css';
 // import AddTask from "./components/AddTask.jsx";
 
 //React imports
-import { useState } from 'react';
+// import { useState } from 'react';
 import { createBrowserRouter, RouterProvider, BrowserRouter, Routes, Route } from "react-router-dom";
 
 
@@ -22,8 +22,9 @@ import Login from "./pages/Login.jsx";
 import Home from "./pages/Home.jsx";
 import Transactions from './pages/Transactions.jsx';
 import NotFound from './pages/NotFound.jsx';
-import RootLayout from './layouts/RootLayout.jsx';
-import Menu from './components/Menu/Menu.jsx';
+import MoneyTransfer from './components/MoneyTransfer/MoneyTransfer.jsx';
+// import RootLayout from './layouts/RootLayout.jsx';
+// import Menu from './components/Menu/Menu.jsx';
 
 const router = createBrowserRouter([
   {
@@ -38,11 +39,11 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <RootLayout />,
+        element: <MoneyTransfer />,
         errorElement: <NotFound />,
       },
       {
-        index: true,
+        path: "Transactions",
         element: <Transactions />,
         errorElement: <NotFound />,
       },
