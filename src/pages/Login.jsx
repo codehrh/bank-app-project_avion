@@ -17,7 +17,7 @@ export default function Login() {
     // const [Login, setUserLogin] = useState("");
 
     //using the imported login file with credentials
-    useEffect (() => {
+    useEffect(() => {
         setCredentials(userLogin);
     }, []);
 
@@ -42,61 +42,70 @@ export default function Login() {
             alert("Incorrect Credentials");
         }
     }
-        
-        // Set initial error values to empty
 
-        // Check if the user has entered both fields correctly
-        // if ('' === user) {
-        //     alert('Please enter your username')
-        //     return
-        // }
+    // Set initial error values to empty
 
-        //  if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(user)) {
-        //    alert('Please enter a valid email')
-        //  return
-        // }
+    // Check if the user has entered both fields correctly
+    // if ('' === user) {
+    //     alert('Please enter your username')
+    //     return
+    // }
 
-        // if ('' === pass) {
-        //     alert('Please enter a password')
-        //     return
-        // }
+    //  if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(user)) {
+    //    alert('Please enter a valid email')
+    //  return
+    // }
 
-        // if (pass.length < 7) {
-        //     alert('The password must be 8 characters or longer')
-        //     return
-        // }
+    // if ('' === pass) {
+    //     alert('Please enter a password')
+    //     return
+    // }
 
-        // if (user === userLogin.username && pass === userLogin.password) {
-        //     navigate('/home');
-        // }
-        // if (user !== userLogin.username || pass !== userLogin.password) {
-        //     alert("Incorrect Credentials")
-        //     return
-        // }
+    // if (pass.length < 7) {
+    //     alert('The password must be 8 characters or longer')
+    //     return
+    // }
 
-        /* <User employee={bankEmployee} address={address}></User>
-          {bankUsers.map((bankUsers) => {
-            return (
-              <div key={bankUsers.id}>
-                {bankUsers.name} {bankUsers.balance} */
+    // if (user === userLogin.username && pass === userLogin.password) {
+    //     navigate('/home');
+    // }
+    // if (user !== userLogin.username || pass !== userLogin.password) {
+    //     alert("Incorrect Credentials")
+    //     return
+    // }
+
+    /* <User employee={bankEmployee} address={address}></User>
+      {bankUsers.map((bankUsers) => {
+        return (
+          <div key={bankUsers.id}>
+            {bankUsers.name} {bankUsers.balance} */
     return (
         <body>
             <div className="Login">
                 <Logo></Logo>
+                <div className="left-align">
+                    <h1>
+                        <span className="dark-accent">Financial </span><span className="accent">  Freedom</span> at Your Fingertips
+                    </h1>
+                    <h4>
+                        Empower Your Future, One Transaction at a Time
+                    </h4>
+                </div>
+
                 <form className="login" onSubmit={handleLogin}>
                     <h1>Login</h1>
                     <label>Username:</label>
-                    <input 
-                        type="text" 
-                        value ={username} 
-                        placeholder="username" 
-                        onChange={handleUser} 
+                    <input
+                        type="text"
+                        value={username}
+                        placeholder="username"
+                        onChange={handleUser}
                     />
                     <label>Password:</label>
-                    <input 
-                        type="password" 
-                        value={password} 
-                        placeholder="Password" 
+                    <input
+                        type="password"
+                        value={password}
+                        placeholder="Password"
                         onChange={handlePassword}
                     />
                     <br />

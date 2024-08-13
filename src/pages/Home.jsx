@@ -15,7 +15,6 @@ export default function Home() {
                 <Logo></Logo>
             </div>
             <div className="rightnav">
-                <SearchBar></SearchBar>
             </div>
         </div>
 
@@ -24,7 +23,7 @@ export default function Home() {
                     <RootLayout></RootLayout>
                 </div>
                 <div className="rightContainer">
-                  <Outlet/>
+                    <Outlet />
                 </div>
             </div>
         </div>

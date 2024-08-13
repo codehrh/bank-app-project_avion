@@ -1,51 +1,3 @@
-body {
-  background-color: #000814;
-  box-sizing: border-box;
-}
-
-* {
-  color: azure;
-}
-
-.nav {
-  height: 15%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1vmin 2.5vmin;
-}
-
-.mainContainer {
-  width: 96%;
-  display: flex;
-  flex-direction: row;
-  margin-right: 4vmin;
-}
-
-.leftContainer {
-  width: 20%;
-  height: 100%;
-}
-
-.leftContainer div {
-  justify-content: center;
-  align-items: center;
-}
-
-.leftContainer a {
-  text-decoration: none;
-}
-
-
-.rightContainer {
-  width: 80%;
-  height: 80vh;
-  margin-left: 2vmin;
-
-
-}
-
 .App {
   text-align: center;
   width: 100%;
@@ -85,18 +37,4 @@ body {
   to {
     transform: rotate(360deg);
   }
-}
-
-.calculator input,
-button {
-  color: black;
-}
-
-.dataList input,
-button {
-  color: black;
-}
-
-.login input {
-  color: black;
 }

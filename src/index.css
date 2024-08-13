@@ -11,3 +11,121 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #f8f8f8;
+  box-sizing: border-box;
+
+}
+
+.logo {
+  font-family: "Exo 2";
+  font-optical-sizing: auto;
+  font-weight: bold;
+  color: #003566;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.imglogo {
+  height: 4vmin;
+  width: auto;
+  margin: .5vmin;
+}
+
+.nav {
+  height: 15%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1vmin 2.5vmin;
+  text-decoration: none;
+}
+
+.mainContainer {
+  width: 96%;
+  display: flex;
+  flex-direction: row;
+  margin-right: 4vmin;
+}
+
+.leftContainer {
+  width: 20%;
+  height: 100%;
+}
+
+.leftContainer div {
+  justify-content: center;
+  align-items: center;
+}
+
+.leftContainer a {
+  text-decoration: none;
+  color: azure;
+}
+
+
+.rightContainer {
+  width: 80%;
+  height: 80vh;
+  margin-left: 2vmin;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.root-layout {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  border: 1px solid #fff;
+  background-color: rgb(0, 53, 102);
+  font-family: 'Exo 2', sans-serif;
+}
+
+.item {
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+}
+
+.Login h3 {
+  font-size: 7vmin;
+}
+
+.Login img {
+  height: 7vmin;
+}
+
+.accent {
+  color: #FFC300;
+}
+
+.dark-accent {
+  color: #001D3D;
+}
+
+.left-align {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+}
+
+.Login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
