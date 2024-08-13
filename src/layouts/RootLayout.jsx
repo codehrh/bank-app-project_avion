@@ -6,14 +6,20 @@ export default function RootLayout() {
         <div className="root-layout">
             <header>
                 <nav>
-                    <NavLink className="item" to="/Home">
-                        Home
+                    <NavLink className="item" to="Overview">
+                        Overview
                     </NavLink>
                     <NavLink className="item" to="Transactions">
-                        Transaction
+                        Accounts
                     </NavLink>
-                    <NavLink className="item" to="about">
-                        About
+                    <NavLink className="item" to="About">
+                        Transactions
+                    </NavLink>
+                    <NavLink className="item" to="Transfer">
+                        Transfer
+                    </NavLink>
+                    <NavLink className="item" to="BudgetApp">
+                        Budget App
                     </NavLink>
                 </nav>
             </header>
