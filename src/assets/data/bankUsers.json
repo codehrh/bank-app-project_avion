@@ -2,21 +2,29 @@
     {
         "id":0,
         "name": "Juan Dela Cruz",
+        "username": "jdelacruz",
+        "password": "jdelacruz123",
         "balance": 30000
     },
     {
         "id":1,
         "name": "Sarah Duterte",
+        "username": "sduterte",
+        "password": "sduterte123",
         "balance": 125000
     },
     {
         "id":2,
         "name": "Jejomar Binay",
+        "username": "jbinay",
+        "password": "jbinay123",
         "balance": 75000
     },
     {
         "id":3,
         "name": "Janet Napoles",
+        "username": "jnapoles",
+        "password": "jnapoles123",
         "balance": 100000
     }
 ]

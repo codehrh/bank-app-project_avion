@@ -1,5 +1,5 @@
-import SearchBar from "../components/SearchBar/SearchBar.jsx";
-import Logo from "../components/Logo/Logo.jsx";
+import SearchBar from "../components/SearchBar.jsx";
+import Logo from "../components/Logo.jsx";
 import RootLayout from "../layouts/RootLayout.jsx";
 
 //Unused import

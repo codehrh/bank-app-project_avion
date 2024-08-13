@@ -1,4 +1,4 @@
-import "./User.css";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import '@fontsource/exo-2';
