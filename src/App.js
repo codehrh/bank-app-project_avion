@@ -40,6 +40,10 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
+        element: <Overview />,
+        errorElement: <NotFound />,
+      },
+      {
         path: "Overview",
         element: <Overview />,
         errorElement: <NotFound />,
