@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import Logo from "../components/Logo/Logo.jsx";
-=======
 import SearchBar from "../components/SearchBar.jsx";
 import Logo from "../components/Logo.jsx";
->>>>>>> 3cf4887c8e7507ca7f01e70ba90d46268b434726
 import RootLayout from "../layouts/RootLayout.jsx";
 import DefaultSidebar from "../layouts/DefaultSidebar.jsx";
 
