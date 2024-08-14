@@ -1,5 +1,5 @@
 import { useState } from "react";
-import data from "../../assets/data/bankUsers.json";
+import data from "../assets/data/bankUsers.json";
 
 
 
@@ -65,7 +65,7 @@ export default function MoneyTransfer() {
                         );
                     })}
                     <button onClick={() => setShow(show ? false : true)}>
-                        {/* show is inversely proportional to value - if show is true, value is false; if show is false, the value is true */}
+                        Transfer{/* show is inversely proportional to value - if show is true, value is false; if show is false, the value is true */}
                     </button>
                 </div>
             }
@@ -82,14 +82,14 @@ export default function MoneyTransfer() {
                     <input
                         type="text"
                         value={receiver}
-                        onChange={(event) => setSender(event.target.value)}
+                        onChange={(event) => setReceiver(event.target.value)}
                     ></input>{" "}
                     <br />
                     <label>Amount:</label>
                     <input
                         type="text"
                         value={amount}
-                        onChange={(event) => setSender(event.target.value)}
+                        onChange={(event) => setAmount(event.target.value)}
                     ></input>{" "}
                     <br />
                     <button>Confirm Transfer</button>

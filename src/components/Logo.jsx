@@ -1,6 +1,5 @@
-import "./Logo.css";
 import '@fontsource/exo-2';
-import bankLogo from "../../assets/images/dinerobankicon.png";
+import bankLogo from "../assets/images/dinerobankicon.png";
 
 export default function Logo() {
     return (

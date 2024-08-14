@@ -1,14 +1,14 @@
-import "./Login.css"
-import Logo from "../components/Logo/Logo";
+
+import Logo from "../components/Logo";
 import { useState, useEffect } from 'react';
-import userLogin from "../assets/data/userLogin.json";
+import bankUsers from "../assets/data/bankUsers.json";
 import { useNavigate } from 'react-router-dom';
 import { UserIcon } from '@heroicons/react/24/solid'
 
 export default function Login() {
     const [user, setUser] = useState("");
     const [pass, setPass] = useState("");
-    const { username, password } = userLogin;
+    const { username, password } = bankUsers;
     const [credentials, setCredentials] = useState("");
     const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ export default function Login() {
 
     //using the imported login file with credentials
     useEffect(() => {
-        setCredentials(userLogin);
+        setCredentials(bankUsers);
     }, []);
 
     const handleUser = (event) => {
@@ -38,6 +38,7 @@ export default function Login() {
         );
 
         if (matchedUser) {
+            localStorage.setItem('loggedInUser', JSON.stringify(matchedUser));
             navigate('/Home');
         } else {
             alert("Incorrect Credentials");

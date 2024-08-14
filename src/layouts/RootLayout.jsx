@@ -10,13 +10,13 @@ export default function RootLayout() {
                     <NavLink className="item" to="Overview">
                         Overview
                     </NavLink>
-                    <NavLink className="item" to="Transactions">
+                    <NavLink className="item" to="Accounts">
                         Accounts
                     </NavLink>
-                    <NavLink className="item" to="About">
+                    <NavLink className="item" to="Transactions">
                         Transactions
                     </NavLink>
-                    <NavLink className="item" to="Transfer">
+                    <NavLink className="item" to="MoneyTransfer">
                         Transfer
                     </NavLink>
                     <NavLink className="item" to="BudgetApp">

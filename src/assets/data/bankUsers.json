@@ -2,21 +2,37 @@
     {
         "id":0,
         "name": "Juan Dela Cruz",
-        "balance": 30000
+        "username": "jdelacruz",
+        "password": "jdelacruz123",
+        "balance": 30000,
+        "accountnumber": "008756437814",
+        "securitycode": "742"
     },
     {
         "id":1,
         "name": "Sarah Duterte",
-        "balance": 125000
+        "username": "sduterte",
+        "password": "sduterte123",
+        "balance": 125000,
+        "accountnumber": "007319554821",
+        "securitycode": "351"
     },
     {
         "id":2,
         "name": "Jejomar Binay",
-        "balance": 75000
+        "username": "jbinay",
+        "password": "jbinay123",
+        "balance": 75000,
+        "accountnumber": "003452164628",
+        "securitycode": "628"
     },
     {
         "id":3,
         "name": "Janet Napoles",
-        "balance": 100000
+        "username": "jnapoles",
+        "password": "jnapoles123",
+        "balance": 100000,
+        "accountnumber": "005127851385",
+        "securitycode": "431"
     }
 ]
