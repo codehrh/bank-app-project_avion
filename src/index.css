@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,6 +9,26 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1 {
+  font-size: 5vmin;
+}
+
+h2 {
+  font-size: 4vmin;
+}
+
+h3 {
+  font-size: 3vmin;
+}
+
+h4 {
+  font-size: 2vmin;
 }
 
 code {
@@ -32,6 +56,7 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  font-size: 3.5vmin;
 }
 
 .imglogo {
@@ -40,7 +65,7 @@ body {
   margin: .5vmin;
 }
 
-.nav {
+* .nav {
   height: 15%;
   display: flex;
   flex-direction: row;
@@ -69,7 +94,6 @@ body {
 
 .leftContainer a {
   text-decoration: none;
-  color: azure;
 }
 
 
@@ -79,12 +103,12 @@ body {
   margin-left: 2vmin;
 }
 
-nav {
+/* nav {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .root-layout {
   height: 100%;
@@ -101,7 +125,7 @@ nav {
   padding-bottom: 2vh;
 }
 
-.Login h3 {
+.Login h1 {
   font-size: 7vmin;
 }
 
@@ -109,21 +133,27 @@ nav {
   height: 7vmin;
 }
 
+.login {
+  margin-top: 2%;
+}
+
 .accent {
   color: #FFD60A;
 }
 
 .dark-accent {
-  color: #001D3D;
+  color: #003566;
 }
 
 .left-align {
+  margin-top: 5%;
   display: flex;
   align-items: start;
   flex-direction: column;
 }
 
 .Login {
+  margin-top: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -164,4 +194,43 @@ nav {
 
 .btn {
   background-color: lightblue;
+}
+
+.login-body {
+  background-image: url("./assets/images/bgbank.png");
+}
+
+.login {
+  margin-top: 2.5%;
+  padding: 2vmin;
+  border-radius: 1.5vmin;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.login h3 {
+  padding: 1.5vmin;
+  padding-top: 0;
+}
+
+.icons {
+  height: 8vmin;
+  color: #003566;
+}
+
+.icons-s {
+  height: 3.5vmin;
+}
+
+.inputs {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.inputs input {
+  border: none;
+}
+
+.inputs input {
+  border: none;
 }

@@ -10,6 +10,8 @@ export default function MoneyTransfer() {
     const [receiver, setReceiver] = useState("");
     const [amount, setAmount] = useState("");
 
+
+
     const userExist = (name) => {
         return users.find(user => user.name === name);
     }
@@ -56,6 +58,7 @@ export default function MoneyTransfer() {
                 <div>
                     {users.map((user) => {
                         return (
+
                             <div key={user.id}>
                                 {user.name} - {user.balance}
                             </div>

@@ -3,6 +3,7 @@ import Logo from "../components/Logo/Logo";
 import { useState, useEffect } from 'react';
 import userLogin from "../assets/data/userLogin.json";
 import { useNavigate } from 'react-router-dom';
+import { UserIcon } from '@heroicons/react/24/solid'
 
 export default function Login() {
     const [user, setUser] = useState("");
@@ -80,27 +81,31 @@ export default function Login() {
           <div key={bankUsers.id}>
             {bankUsers.name} {bankUsers.balance} */
     return (
-        <body>
+        <body className="login-body">
             <div className="Login">
                 <Logo></Logo>
                 <div className="left-align">
-                    <h1>
-                        <span className="dark-accent">Financial </span><span className="accent">  Freedom</span> at Your Fingertips
-                    </h1>
-                    <h4>
+                    <h2>
+                        Financial <span className="accent">  Freedom</span> at Your Fingertips
+                    </h2>
+                    <h3>
                         Empower Your Future, One Transaction at a Time
-                    </h4>
+                    </h3>
                 </div>
 
                 <form className="login" onSubmit={handleLogin}>
-                    <h1>Login</h1>
-                    <label>Username:</label>
-                    <input
-                        type="text"
-                        value={username}
-                        placeholder="username"
-                        onChange={handleUser}
-                    />
+                    <UserIcon className="icons"></UserIcon>
+                    <h3>User Login</h3>
+                    <div className="inputs">
+                        <label><UserIcon className="icons-s"></UserIcon>|</label>
+                        <input
+                            type="text"
+                            value={username}
+                            placeholder="Username"
+                            onChange={handleUser}
+                        />
+                    </div>
+                    <br />
                     <label>Password:</label>
                     <input
                         type="password"

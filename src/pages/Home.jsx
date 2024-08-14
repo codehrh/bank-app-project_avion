@@ -1,6 +1,7 @@
-import SearchBar from "../components/SearchBar/SearchBar.jsx";
 import Logo from "../components/Logo/Logo.jsx";
 import RootLayout from "../layouts/RootLayout.jsx";
+import DefaultSidebar from "../layouts/DefaultSidebar.jsx";
+
 
 //Unused import
 // import BudgetApp from "../BudgetApp/BudgetApp.jsx";
@@ -12,7 +13,6 @@ export default function Home() {
     return (
         <div className="MainContainer">   <div className="nav">
             <div className="leftnav">
-                <Logo></Logo>
             </div>
             <div className="rightnav">
             </div>
@@ -20,7 +20,7 @@ export default function Home() {
 
             <div className="mainContainer">
                 <div className="leftContainer">
-                    <RootLayout></RootLayout>
+                    <DefaultSidebar />
                 </div>
                 <div className="rightContainer">
                     <Outlet />
