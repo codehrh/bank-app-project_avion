@@ -23,6 +23,7 @@ import Home from "./pages/Home.jsx";
 import Transactions from './pages/Transactions.jsx';
 import NotFound from './pages/NotFound.jsx';
 import MoneyTransfer from './components/MoneyTransfer.jsx';
+import Overview from './pages/Overview.jsx'
 // import RootLayout from './layouts/RootLayout.jsx';
 // import Menu from './components/Menu.jsx';
 
@@ -39,12 +40,23 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <MoneyTransfer />,
+        path: "Overview",
+        element: <Overview />,
         errorElement: <NotFound />,
       },
       {
         path: "Transactions",
         element: <Transactions />,
+        errorElement: <NotFound />,
+      },
+      {
+        path: "Transactions",
+        element: <Transactions />,
+        errorElement: <NotFound />,
+      },
+      {
+        path: "MoneyTransfer",
+        element: <MoneyTransfer />,
         errorElement: <NotFound />,
       },
     ]

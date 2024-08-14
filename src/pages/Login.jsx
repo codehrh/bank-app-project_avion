@@ -37,6 +37,7 @@ export default function Login() {
         );
 
         if (matchedUser) {
+            localStorage.setItem('loggedInUser', JSON.stringify(matchedUser));
             navigate('/Home');
         } else {
             alert("Incorrect Credentials");
