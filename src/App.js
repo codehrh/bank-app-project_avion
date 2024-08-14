@@ -54,11 +54,6 @@ const router = createBrowserRouter([
         errorElement: <NotFound />,
       },
       {
-        path: "Transactions",
-        element: <Transactions />,
-        errorElement: <NotFound />,
-      },
-      {
         path: "MoneyTransfer",
         element: <MoneyTransfer />,
         errorElement: <NotFound />,
