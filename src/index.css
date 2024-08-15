@@ -85,7 +85,6 @@ body {
 .leftContainer {
   width: 20%;
   height: 100%;
-  border: solid 1px black;
 }
 
 .leftContainer div {
@@ -200,7 +199,6 @@ body {
   background-color: lightblue;
 }
 
-<<<<<<< HEAD
 .login-body {
   background-image: url("./assets/images/bgbank.png");
 }
@@ -239,7 +237,6 @@ body {
 .inputs input {
   border: none;
 }
-=======
 /* Money Transfer styling */
 
 .moneyTransfer {
@@ -293,4 +290,3 @@ body {
   border-radius: 4px;
   border: 1px solid #ccc;
 }
->>>>>>> 3cf4887c8e7507ca7f01e70ba90d46268b434726
