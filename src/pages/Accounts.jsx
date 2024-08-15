@@ -36,6 +36,4 @@ export default function Accounts() {
             </table>
         </div>
     )
-
-
 }
