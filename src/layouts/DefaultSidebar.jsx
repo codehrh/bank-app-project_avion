@@ -68,7 +68,7 @@ const Sidebar = () => {
                     </li>
                     <li className="">
                         <NavLink
-                            to="budget-app"
+                            to="BudgetApp"
                         >
                             <div className="flex items-center gap-x-2 justify-start">
                                 <FaPiggyBank />

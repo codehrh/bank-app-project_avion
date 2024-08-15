@@ -24,30 +24,30 @@ export default function MoneyTransfer() {
     const handleTransaction = () => {
         const newAmount = Number(amount);
         if (
-            userExist(sender) &&
+            userExist(user) &&
             newAmount > 0
         ) {
             const userInfo = findUser(user);
-            if (senderInfo.balance >= newAmount) {
-                const updateUsers = users.map((user) => {
-                    if (user.name === user) {
-                        if (transactionType === "withdraw") {
-                            if (user.balance >= newAmount) {
-                                return { ...user, balance: user.balance - newAmount };
-                            } else {
-                                alert ("Not enough balance");
-                            }
+            const updateUsers = users.map((u) => {
+                if (u.name === user) {
+                    if (transactionType === "withdraw") {
+                        if (u.balance >= newAmount) {
+                            return { ...u, balance: u.balance - newAmount };
+                        } else {
+                            alert("Not enough balance");
+                            return u;
                         }
-                    }});
-                setUsers(updateUsers);
-            } else {
-                alert("Not Enough Balance");
-            }
+                    } else if (transactionType === "deposit") {
+                        return { ...u, balance: u.balance + newAmount };
+                    }
+                }
+                return u;
+            });
+            setUsers(updateUsers);
         } else {
             alert("Transaction Invalid");
         }
-        setSender("");
-        setReceiver("");
+        setUser("");
         setAmount("");
         setShow(false);
     };
@@ -64,25 +64,21 @@ export default function MoneyTransfer() {
                             </div>
                         );
                     })}
-                    <button onClick={() => setShow(show ? false : true)}>
-                        Transfer{/* show is inversely proportional to value - if show is true, value is false; if show is false, the value is true */}
+                    <button onClick={() => setShow(!show)}>
+                        {show ? "Hide Form" : "Show Form"}{/* show is inversely proportional to value - if show is true, value is false; if show is false, the value is true */}
                     </button>
                 </div>
             }
             {show && (
-                <form onSubmit={transferMoney}>
-                    <label>Sender:</label>
+                <form onSubmit={(event) => {
+                    event.preventDefault();
+                    handleTransaction();
+                }}>
+                    <label>User:</label>
                     <input
                         type="text"
-                        value={sender}
-                        onChange={(event) => setSender(event.target.value)}
-                    ></input>{" "}
-                    <br />
-                    <label>Receiver:</label>
-                    <input
-                        type="text"
-                        value={receiver}
-                        onChange={(event) => setReceiver(event.target.value)}
+                        value={user}
+                        onChange={(event) => setUser(event.target.value)}
                     ></input>{" "}
                     <br />
                     <label>Amount:</label>
@@ -92,7 +88,16 @@ export default function MoneyTransfer() {
                         onChange={(event) => setAmount(event.target.value)}
                     ></input>{" "}
                     <br />
-                    <button>Confirm Transfer</button>
+                    <label>Transaction Type:</label>
+                    <select
+                        value={transactionType}
+                        onChange={(event) => setTransactionType(event.target.value)}
+                    >
+                        <option value="withdraw">Withdraw</option>
+                        <option value="deposit">Deposit</option>
+                        </select>{" "}
+                    <br />
+                    <button type="submit">Confirm Transaction</button>
                 </form>
             )}
         </div>

@@ -168,6 +168,4 @@ export default function Accounts() {
             </div>
         </body>
     )
-
-
 }
