@@ -31,7 +31,7 @@ const Sidebar = () => {
                     </li>
                     <li className="">
                         <NavLink
-                            to="account"
+                            to="accounts"
 
                         >
                             <div className="flex items-center gap-x-2 justify-start">

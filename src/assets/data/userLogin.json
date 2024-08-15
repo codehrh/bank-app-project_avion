@@ -2,11 +2,15 @@
     {
         "id": 0,
         "username": "harah",
+        "firstname": "Hara",
+        "lastname": "Honasan",
         "password": "user123"
     },
     {
         "id": 1,
         "username": "carac",
+        "firstname": "Cara",
+        "lastname": "Cajes",
         "password": "user123"
     }
 ]

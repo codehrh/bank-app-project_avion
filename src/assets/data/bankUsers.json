@@ -1,38 +1,33 @@
 [
     {
-        "id":0,
+        "id": 0,
         "name": "Juan Dela Cruz",
         "username": "jdelacruz",
+        "email": "jdelacruz@gmail.com",
         "password": "jdelacruz123",
-        "balance": 30000,
-        "accountnumber": "008756437814",
-        "securitycode": "742"
+        "balance": 30000
     },
     {
-        "id":1,
+        "id": 1,
         "name": "Sarah Duterte",
         "username": "sduterte",
-        "password": "sduterte123",
-        "balance": 125000,
-        "accountnumber": "007319554821",
-        "securitycode": "351"
+        "email": "sduterte@gmail.com",
+        "password": "sduterte123"
     },
     {
-        "id":2,
+        "id": 2,
         "name": "Jejomar Binay",
         "username": "jbinay",
+        "email": "jbinay@gmail.com",
         "password": "jbinay123",
-        "balance": 75000,
-        "accountnumber": "003452164628",
-        "securitycode": "628"
+        "balance": 75000
     },
     {
-        "id":3,
+        "id": 3,
         "name": "Janet Napoles",
         "username": "jnapoles",
+        "email": "jnapoles@gmail.com",
         "password": "jnapoles123",
-        "balance": 100000,
-        "accountnumber": "005127851385",
-        "securitycode": "431"
+        "balance": 100000
     }
 ]
