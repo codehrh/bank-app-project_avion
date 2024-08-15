@@ -44,7 +44,7 @@ const router = createBrowserRouter([
         errorElement: <NotFound />,
       },
       {
-        path: "Overview",
+        path: "Dashboard",
         element: <Overview />,
         errorElement: <NotFound />,
       },
@@ -54,8 +54,13 @@ const router = createBrowserRouter([
         errorElement: <NotFound />,
       },
       {
-        path: "MoneyTransfer",
+        path: "TransferMoney",
         element: <MoneyTransfer />,
+        errorElement: <NotFound />,
+      },
+      {
+        path: "logout",
+        element: <Login />,
         errorElement: <NotFound />,
       },
     ]

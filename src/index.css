@@ -11,9 +11,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-html {
+/* html {
   -webkit-tap-highlight-color: transparent;
-}
+} */
 
 h1 {
   font-size: 5vmin;
@@ -42,7 +42,6 @@ code {
 }
 
 body {
-  background-color: #f8f8f8;
   box-sizing: border-box;
 
 }
@@ -56,41 +55,39 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  font-size: 3.5vmin;
+  font-size: 5.5vmin;
 }
 
 .imglogo {
-  height: 4vmin;
+  height: 5vmin;
   width: auto;
   margin: .5vmin;
 }
 
 * .nav {
-  height: 15%;
+  /* height: 15%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 1vmin 2.5vmin;
-  text-decoration: none;
+  text-decoration: none; */
 }
 
 .mainContainer {
-  width: 96%;
+  /* width: 96%; */
   display: flex;
   flex-direction: row;
-  margin-right: 4vmin;
+  /* margin-right: 4vmin; */
 }
 
+.leftContainer {}
 .leftContainer {
   width: 20%;
   height: 100%;
 }
 
-.leftContainer div {
-  justify-content: center;
-  align-items: center;
-}
+.leftContainer div {}
 
 .leftContainer a {
   text-decoration: none;
@@ -101,9 +98,9 @@ body {
   width: 80%;
   height: 80vh;
   margin-left: 2vmin;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-  border-radius: 8px; 
-  background-color: #fff; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #fff;
 }
 
 /* nav {
@@ -224,9 +221,19 @@ body {
   height: 3.5vmin;
 }
 
-.inputs {
+.iconseffect {}
+
+.homelogo {
+  font-family: "Exo 2";
+  font-optical-sizing: auto;
+  font-weight: bold;
+  color: #003566;
   display: flex;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
+  font-size: 3.5vmin;
+
   align-items: baseline;
 }
 
@@ -254,39 +261,7 @@ body {
   margin-bottom: 5px; 
 }
 
-.moneyTransfer div > div {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
-
-.moneyTransfer button {
-  background-color: #133f6d;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-.moneyTransfer button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
-}
-
-.moneyTransfer form {
-  display: flex;
-  flex-direction: column;
-}
-
-.moneyTransfer label {
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-.moneyTransfer input {
-  padding: 8px;
-  margin-top: 2px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+.logo-img {
+  height: 3vmin;
+  margin: .5vmin;
 }

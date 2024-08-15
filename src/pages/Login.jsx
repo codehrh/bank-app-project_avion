@@ -3,7 +3,11 @@ import Logo from "../components/Logo";
 import { useState, useEffect } from 'react';
 import bankUsers from "../assets/data/bankUsers.json";
 import { useNavigate } from 'react-router-dom';
-import { UserIcon } from '@heroicons/react/24/solid'
+import { FaUser } from "react-icons/fa";
+import { RiLockPasswordFill } from "react-icons/ri";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function Login() {
     const [user, setUser] = useState("");
@@ -31,6 +35,7 @@ export default function Login() {
     };
 
     const handleLogin = (event) => {
+
         event.preventDefault();
 
         const matchedUser = credentials.find(
@@ -40,8 +45,9 @@ export default function Login() {
         if (matchedUser) {
             localStorage.setItem('loggedInUser', JSON.stringify(matchedUser));
             navigate('/Home');
+            toast.success("Login Successful");
         } else {
-            alert("Incorrect Credentials");
+            toast.error("Incorrect Credentials");
         }
     }
 
@@ -82,7 +88,47 @@ export default function Login() {
           <div key={bankUsers.id}>
             {bankUsers.name} {bankUsers.balance} */
     return (
-        <body className="login-body">
+
+        <body className="flex flex-col items-center justify-center h-screen bg-gradient-to-l from-sky-300 via-yellow-200 to-yellow-100">
+            <Logo />
+            <div className="mb-8">
+                <h3>Financial Freedom at Your Fingertips</h3>
+            </div>
+            <div className="max-w-[960px] bg-black-dark items-center gap-20 p-5 rounded-2xl shadow-2xl p-2.5">
+                <div className="max-w-80 grid gap-5">
+                    <h3 className="font-bold text-gray-600 ">User Login</h3>
+                    <form action="" className="space-y-6 text-black" onSubmit={handleLogin}>
+                        <div className="relative">
+                            <div className="absolute top-1 left-1 bg-white-medium rounded-full p-2 flex items-center justify-center text-blue-300 iconseffect">
+                                <FaUser />
+                            </div>
+                            <input
+                                type="text"
+                                value={username}
+                                placeholder="Username"
+                                onChange={handleUser}
+                                className="w-80 bg-white-light py-2 px-12 rounded-full focus:bg-black-dark focus:outline-none focus:ring-1 focus:ring-neon-blue focus:drop-shadow-lg" />
+                        </div>
+                        <div className="relative">
+                            <div className="absolute top-1 left-1 bg-white-medium rounded-full p-2 flex items-center justify-center text-blue-300">
+                                <RiLockPasswordFill />
+                            </div>
+                            <input
+                                type="password"
+                                value={password}
+                                placeholder="Password"
+                                onChange={handlePassword}
+                                className="w-80 bg-white-light py-2 px-12 rounded-full focus:bg-black-dark focus:outline-none focus:ring-1 focus:ring-neon-blue focus:drop-shadow-lg" />
+                        </div>
+                        <button type="submit" className="bg-gradient-to-r from-blue-400 to-cyan-200 w-80 font-semibold rounded-full py-2">Login</button>
+                        <ToastContainer />
+                    </form>
+
+                </div>
+            </div>
+        </body>
+
+        /* <body className="login-body">
             <div className="Login">
                 <Logo></Logo>
                 <div className="left-align">
@@ -118,6 +164,7 @@ export default function Login() {
                     <button type="submit">Login</button>
                 </form>
             </div>
-        </body>
+        </body> */
+
     )
 }
