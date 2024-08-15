@@ -1,7 +1,7 @@
 
 import Logo from "../components/Logo";
 import { useState, useEffect } from 'react';
-import bankUsers from "../assets/data/bankUsers.json";
+import empLogin from "../assets/data/empLogin.json";
 import { useNavigate } from 'react-router-dom';
 import { FaUser } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function Login() {
     const [user, setUser] = useState("");
     const [pass, setPass] = useState("");
-    const { username, password } = bankUsers;
+    const { username, password } = empLogin;
     const [credentials, setCredentials] = useState("");
     const navigate = useNavigate();
 
@@ -23,7 +23,7 @@ export default function Login() {
 
     //using the imported login file with credentials
     useEffect(() => {
-        setCredentials(bankUsers);
+        setCredentials(empLogin);
     }, []);
 
     const handleUser = (event) => {

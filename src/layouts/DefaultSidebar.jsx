@@ -52,11 +52,21 @@ const Sidebar = () => {
                     </li>
                     <li className="">
                         <NavLink
-                            to="transfer-money"
+                            to="TransferMoney"
                         >
                             <div className="flex items-center gap-x-2 justify-start">
                                 <FaMoneyBillTransfer />
                                 <span>Transfer Money</span>
+                            </div>
+                        </NavLink>
+                    </li>
+                    <li className="">
+                        <NavLink
+                            to="DepositWithdraw"
+                        >
+                            <div className="flex items-center gap-x-2 justify-start">
+                                <FaMoneyBills />
+                                <span>Deposit/Withdraw</span>
                             </div>
                         </NavLink>
                     </li>
