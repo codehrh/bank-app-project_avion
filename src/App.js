@@ -50,7 +50,7 @@ const router = createBrowserRouter([
         errorElement: <NotFound />,
       },
       {
-        path: "home/accounts",
+        path: "Accounts",
         element: <Accounts />,
         errorElement: <NotFound />,
       },

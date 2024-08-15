@@ -6,6 +6,12 @@ import { FaMoneyBillTransfer } from "react-icons/fa6";
 import { FaMoneyBills } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import { FaHandHoldingUsd } from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
+import { FaPiggyBank } from "react-icons/fa";
+
+
+
 import bankLogo from "../assets/images/dinerobankicon.png";
 
 
@@ -31,22 +37,12 @@ const Sidebar = () => {
                     </li>
                     <li className="">
                         <NavLink
-                            to="accounts"
+                            to="Accounts"
 
                         >
                             <div className="flex items-center gap-x-2 justify-start">
-                                <IoCardSharp />
-                                <span>Account</span>
-                            </div>
-                        </NavLink>
-                    </li>
-                    <li className="">
-                        <NavLink
-                            to="transactions"
-                        >
-                            <div className="flex items-center gap-x-2 justify-start">
-                                <GrTransaction />
-                                <span>Transactions</span>
+                                <FaUserCircle />
+                                <span>Accounts</span>
                             </div>
                         </NavLink>
                     </li>
@@ -65,7 +61,7 @@ const Sidebar = () => {
                             to="DepositWithdraw"
                         >
                             <div className="flex items-center gap-x-2 justify-start">
-                                <FaMoneyBills />
+                                <FaHandHoldingUsd />
                                 <span>Deposit/Withdraw</span>
                             </div>
                         </NavLink>
@@ -75,7 +71,7 @@ const Sidebar = () => {
                             to="budget-app"
                         >
                             <div className="flex items-center gap-x-2 justify-start">
-                                <FaMoneyBills />
+                                <FaPiggyBank />
                                 <span>Budget App</span>
                             </div>
                         </NavLink>

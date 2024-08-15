@@ -1,6 +1,3 @@
-import SearchBar from "../components/SearchBar.jsx";
-import Logo from "../components/Logo.jsx";
-import RootLayout from "../layouts/RootLayout.jsx";
 import DefaultSidebar from "../layouts/DefaultSidebar.jsx";
 
 
