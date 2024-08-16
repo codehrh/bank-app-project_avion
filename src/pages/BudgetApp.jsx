@@ -2,6 +2,13 @@ import React, { useState } from "react";
 import data from "../assets/data/bankUsers.json";
 import { toast, ToastContainer } from "react-toastify";
 
+const formattedBalance = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'PHP',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+});
+
 export default function BudgetTracker() {
     const [users, setUsers] = useState(data);
     const [show, setShow] = useState(false); // flag to hide or show elements
@@ -63,7 +70,7 @@ export default function BudgetTracker() {
                 <div>
                     {users.map((u) => (
                         <div key={u.id}>
-                            <div>{u.name} - Balance: ${u.balance.toFixed(2)} </div>
+                            <h3>{u.name} - Balance: {formattedBalance.format(u.balance.toFixed(2))}</h3>
                             <ul>
                                 {u.expenses && u.expenses.map((expense, index) => (
                                     <li key={index}>
