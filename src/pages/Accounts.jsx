@@ -136,7 +136,7 @@ export default function Accounts() {
                                                 className="w-80 bg-white-light py-2 px-12 rounded-full focus:bg-black-dark focus:outline-none focus:ring-1 focus:ring-neon-blue focus:drop-shadow-lg" />
                                         </div>
                                         <button type="submit" className="bg-gradient-to-r from-blue-400 to-cyan-200 w-80 font-semibold rounded-full py-2">Sign up</button>
-                                        <ToastContainer />
+
                                     </form>
                                     <button className="close-modal" onClick={toggleModal}>
                                         X
@@ -148,7 +148,7 @@ export default function Accounts() {
                     </div>
                 )}
             </div>
-            <div className="max-w-[600px] bg-white item-start gap-20 p-5 rounded-2xl shadow-2xl p-2.5">
+            <div className="max-w-[600px] bg-slate-100 item-start gap-20 p-5 rounded-2xl shadow-2xl p-2.5">
                 <table className="p-6 divide-y divide-slate-200 ">
                     <thead className="">
                         <tr>
@@ -171,8 +171,9 @@ export default function Accounts() {
                         }
                     </tbody>
                 </table>
-            </div>
 
+            </div>
+            <ToastContainer />
         </div>
     )
 }

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function Dashboard() {
+export default function Overview() {
     const [user, setUser] = useState("");
 
     useEffect(() => {
@@ -16,22 +16,22 @@ export default function Dashboard() {
     //     minimumFractionDigits: 2,
     //     maximumFractionDigits: 2,
     // }) : ''; //fallback value in case there are any issues with the value provided (case where the user is not properly loaded)
+    const handleGreetings = (event) => {
 
-    // const handleGreetings = (event) => {
-
-    //     event.preventDefault();
-    //     if (user.name != null) {
-
-    //     }
-    // }
+        event.preventDefault();
+        if (user.name != null) {
+            toast.success(`Hello, ${user.name}`);
+        }
+    }
 
     return (
-        <div>
-            <h1>Dashboard</h1>
+
+        <div className="overview">
             <div className="greeting">
                 Good day, {user.name}!
+                {handleGreetings}
+                <ToastContainer />
             </div>
-            <ToastContainer />
         </div>
     )
 }

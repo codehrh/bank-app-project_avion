@@ -1,5 +1,7 @@
 import { useState } from "react";
 import data from "../assets/data/bankUsers.json";
+import { ToastContainer, toast } from "react-toastify";
+
 
 
 
@@ -32,20 +34,23 @@ export default function MoneyTransfer() {
                 if (u.name === user) {
                     if (transactionType === "withdraw") {
                         if (u.balance >= newAmount) {
+                            toast.success(`${amount} has been widthrawn successfully!`)
                             return { ...u, balance: u.balance - newAmount };
                         } else {
-                            alert("Not enough balance");
+                            toast.error("Not enough balance");
                             return u;
                         }
                     } else if (transactionType === "deposit") {
+                        toast.success(`${amount} has been deposited successfully!`)
                         return { ...u, balance: u.balance + newAmount };
                     }
                 }
                 return u;
             });
             setUsers(updateUsers);
+
         } else {
-            alert("Transaction Invalid");
+            toast.error("Transaction Invalid");
         }
         setUser("");
         setAmount("");
@@ -53,7 +58,7 @@ export default function MoneyTransfer() {
     };
 
     return (
-        <div className="max-w-[600px] bg-slate-200 items-center gap-20 p-5 rounded-2xl shadow-2xl p-2.5">
+        <div className="max-w-[600px] bg-slate-100 items-center gap-20 p-5 rounded-2xl shadow-2xl p-2.5">
             <div className="moneyTransfer">
                 {
                     <div>
@@ -102,6 +107,7 @@ export default function MoneyTransfer() {
                     </form>
                 )}
             </div>
+            <ToastContainer />
         </div>
     );
 }

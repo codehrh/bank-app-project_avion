@@ -1,5 +1,7 @@
 import { useState } from "react";
 import data from "../assets/data/bankUsers.json";
+import { ToastContainer, toast } from "react-toastify";
+
 
 
 
@@ -9,7 +11,6 @@ export default function MoneyTransfer() {
     const [sender, setSender] = useState("");
     const [receiver, setReceiver] = useState("");
     const [amount, setAmount] = useState("");
-
 
 
     const userExist = (name) => {
@@ -34,17 +35,20 @@ export default function MoneyTransfer() {
                 const updateUsers = users.map((user) => {
                     if (user.name === sender) {
                         return { ...user, balance: user.balance - newAmount };
+
                     } else if (user.name === receiver) {
                         return { ...user, balance: user.balance + newAmount };
+
                     }
                     return user;
                 });
                 setUsers(updateUsers);
+                toast.success(`Php${amount} has been transfered Successfully to ${receiver}`);
             } else {
-                alert("Not Enough Balance");
+                toast.error("Not Enough Balance");
             }
         } else {
-            alert("Transaction Invalid");
+            toast.error("Transaction Invalid");
         }
         setSender("");
         setReceiver("");
@@ -52,8 +56,9 @@ export default function MoneyTransfer() {
         setShow(false);
     };
 
+
     return (
-        <div className="max-w-[600px] bg-slate-200 items-center gap-20 p-5 rounded-2xl shadow-2xl p-2.5">
+        <div className="max-w-[600px] bg-slate-100 items-center gap-20 p-5 rounded-2xl shadow-2xl p-2.5">
             <div className="moneyTransfer">
                 {
                     <div>
@@ -97,6 +102,7 @@ export default function MoneyTransfer() {
                     </form>
                 )}
             </div>
+            <ToastContainer />
         </div>
     );
 }

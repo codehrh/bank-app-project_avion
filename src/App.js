@@ -28,6 +28,7 @@ import DepositWithdraw from './components/Deposit-Withdraw.jsx';
 import BudgetTracker from './pages/BudgetApp.jsx';
 import { GrDashboard } from 'react-icons/gr';
 import Dashboard from "./pages/Dashboard.jsx";
+import { ToastContainer } from 'react-toastify';
 
 // import RootLayout from './layouts/RootLayout.jsx';
 // import Menu from './components/Menu.jsx';
@@ -88,6 +89,7 @@ export default function App() {
     <body>
       <div className="App">
         <RouterProvider router={router} />
+        <ToastContainer />
       </div>
     </body>
   );
