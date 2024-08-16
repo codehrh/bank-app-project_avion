@@ -117,8 +117,8 @@ body {
 }
 
 .item {
-  padding-top: 2vh;
-  padding-bottom: 2vh;
+  /* padding-top: 2vh;
+  padding-bottom: 2vh; */
 }
 
 .Login h1 {

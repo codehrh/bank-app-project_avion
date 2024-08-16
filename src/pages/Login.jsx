@@ -121,50 +121,11 @@ export default function Login() {
                                 className="w-80 bg-white-light py-2 px-12 rounded-full focus:bg-black-dark focus:outline-none focus:ring-1 focus:ring-neon-blue focus:drop-shadow-lg" />
                         </div>
                         <button type="submit" className="bg-gradient-to-r from-blue-400 to-cyan-200 w-80 font-semibold rounded-full py-2">Login</button>
-                        <ToastContainer />
                     </form>
 
                 </div>
             </div>
+            <ToastContainer />
         </body>
-
-        /* <body className="login-body">
-            <div className="Login">
-                <Logo></Logo>
-                <div className="left-align">
-                    <h2>
-                        Financial <span className="accent">  Freedom</span> at Your Fingertips
-                    </h2>
-                    <h3>
-                        Empower Your Future, One Transaction at a Time
-                    </h3>
-                </div>
-
-                <form className="login" onSubmit={handleLogin}>
-                    <UserIcon className="icons"></UserIcon>
-                    <h3>User Login</h3>
-                    <div className="inputs">
-                        <label><UserIcon className="icons-s"></UserIcon>|</label>
-                        <input
-                            type="text"
-                            value={username}
-                            placeholder="Username"
-                            onChange={handleUser}
-                        />
-                    </div>
-                    <br />
-                    <label>Password:</label>
-                    <input
-                        type="password"
-                        value={password}
-                        placeholder="Password"
-                        onChange={handlePassword}
-                    />
-                    <br />
-                    <button type="submit">Login</button>
-                </form>
-            </div>
-        </body> */
-
     )
 }

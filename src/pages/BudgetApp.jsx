@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import data from "../assets/data/bankUsers.json";
+import { toast, ToastContainer } from "react-toastify";
 
 const formattedBalance = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -37,8 +38,9 @@ export default function BudgetTracker() {
                 return u;
             });
             setUsers(updatedUsers);
+            toast.success(`${expenseDescription} has been added to Expenses`);
         } else {
-            alert("Invalid Expense or User");
+            toast.error("Invalid Expense or User");
         }
         setExpenseDescription("");
         setExpenseAmount("");
@@ -59,11 +61,12 @@ export default function BudgetTracker() {
             return u;
         });
         setUsers(updatedUsers);
+        toast.success(`${expenseDescription} successfully deleted to Expenses`);
     };
 
     return (
-        <div className="max-w-[600px] bg-slate-200 items-center gap-20 p-5 rounded-2xl shadow-2xl p-2.5">
-            <div className="budgetTracker">
+        <div className="max-w-[600px] bg-slate-100 items-center gap-20 p-5 rounded-2xl shadow-2xl p-2.5">
+            <div className="">
                 <div>
                     {users.map((u) => (
                         <div key={u.id}>
@@ -121,6 +124,7 @@ export default function BudgetTracker() {
                     </div>
                 )}
             </div>
+            <ToastContainer />
         </div>
     );
 }
