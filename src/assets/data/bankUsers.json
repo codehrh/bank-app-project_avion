@@ -13,7 +13,11 @@
         "username": "sduterte",
         "email": "sduterte@gmail.com",
         "password": "sduterte123",
+<<<<<<< HEAD
         "balance": 30000
+=======
+        "balance": 200000
+>>>>>>> 1761a410589a194bbf718698d02e4d82547489fe
     },
     {
         "id": 2,
