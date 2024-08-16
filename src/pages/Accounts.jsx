@@ -8,6 +8,12 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 
 
+const formattedBalance = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'PHP',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+});
 
 
 export default function Accounts() {
@@ -165,7 +171,7 @@ export default function Accounts() {
                                     <td className="p-2.5">{user.name}</td>
                                     <td className="p-2.5">{user.username}</td>
                                     <td className="p-2.5">{user.email}</td>
-                                    <td className="p-2.5">{user.balance}</td>
+                                    <td className="p-2.5">{formattedBalance.format(user.balance)}</td>
                                 </tr>
                             )
 

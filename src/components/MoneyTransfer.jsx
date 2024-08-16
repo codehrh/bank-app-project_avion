@@ -1,16 +1,24 @@
 import { useState } from "react";
 import data from "../assets/data/bankUsers.json";
 
-
+const formattedBalance = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'PHP',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+});
 
 export default function MoneyTransfer() {
     const [users, setUsers] = useState(data);
-    const [show, setShow] = useState(false); // flag to hide or show elements
+    const [show, setShow] = useState(false); 
     const [sender, setSender] = useState("");
     const [receiver, setReceiver] = useState("");
     const [amount, setAmount] = useState("");
 
 
+    const getFilteredUsers = (excludeUser) => {
+        return users.filter(user => user.name !== excludeUser);
+    }
 
     const userExist = (name) => {
         return users.find(user => user.name === name);
@@ -61,7 +69,7 @@ export default function MoneyTransfer() {
                             return (
 
                                 <div key={user.id}>
-                                    {user.name} - {user.balance}
+                                    {user.name} - {formattedBalance.format(user.balance)}
                                 </div>
                             );
                         })}
@@ -73,27 +81,40 @@ export default function MoneyTransfer() {
                 {show && (
                     <form onSubmit={transferMoney}>
                         <label>Sender:</label>
-                        <input
-                            type="text"
+                        <select
                             value={sender}
                             onChange={(event) => setSender(event.target.value)}
-                        ></input>{" "}
+                        >
+                            <option value="">Select Sender</option>
+                            {getFilteredUsers(receiver).map(user => (
+                                <option key={user.id} value={user.name}>
+                                    {user.name}
+                                </option>
+                            ))}
+                        </select>
                         <br />
                         <label>Receiver:</label>
-                        <input
-                            type="text"
+                        <select
                             value={receiver}
                             onChange={(event) => setReceiver(event.target.value)}
-                        ></input>{" "}
+                        >
+                            <option value="">Select Receiver</option>
+                            {getFilteredUsers(sender).map(user => (
+                                <option key={user.id} value={user.name}>
+                                    {user.name}
+                                </option>
+                            ))}
+                        </select>
                         <br />
                         <label>Amount:</label>
                         <input
-                            type="text"
+                            type="value"
                             value={amount}
-                            onChange={(event) => setAmount(event.target.value)}
-                        ></input>{" "}
+                            onChange={(event) => setAmount(event.target.value)} 
+                            min="0"
+                        />
                         <br />
-                        <button>Confirm Transfer</button>
+                        <button type="submit">Confirm Transfer</button>
                     </form>
                 )}
             </div>

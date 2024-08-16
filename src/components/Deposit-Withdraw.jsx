@@ -1,7 +1,12 @@
 import { useState } from "react";
 import data from "../assets/data/bankUsers.json";
 
-
+const formattedBalance = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'PHP',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+});
 
 export default function MoneyTransfer() {
     const [users, setUsers] = useState(data);
@@ -61,7 +66,7 @@ export default function MoneyTransfer() {
                             return (
 
                                 <div key={user.id}>
-                                    {user.name} - {user.balance}
+                                    {user.name} - {formattedBalance.format(user.balance)}
                                 </div>
                             );
                         })}
@@ -76,11 +81,17 @@ export default function MoneyTransfer() {
                         handleTransaction();
                     }}>
                         <label>User:</label>
-                        <input
-                            type="text"
+                        <select
                             value={user}
                             onChange={(event) => setUser(event.target.value)}
-                        ></input>{" "}
+                        >
+                            <option value="">Select Account</option>
+                                {users.map((u) => (
+                                    <option key={u.id} value={u.name}>
+                                    {u.name}
+                                </option>
+                                ))}
+                        </select>
                         <br />
                         <label>Amount:</label>
                         <input
