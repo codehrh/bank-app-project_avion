@@ -90,11 +90,17 @@ export default function BudgetTracker() {
                             addExpense();
                         }}>
                             <label>User:</label>
-                            <input
-                                type="text"
-                                value={user}
-                                onChange={(event) => setUser(event.target.value)}
-                            />
+                            <select
+                            value={user}
+                            onChange={(event) => setUser(event.target.value)}
+                        >
+                            <option value="">Select User</option>
+                                {users.map((u) => (
+                                    <option key={u.id} value={u.name}>
+                                    {u.name}
+                                </option>
+                                ))}
+                        </select>
                             <br />
                             <label>Expense Description:</label>
                             <input
