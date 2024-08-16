@@ -56,7 +56,19 @@ export default function MoneyTransfer() {
                 toast.error("Not Enough Balance");
             }
         } else {
-            toast.error("Transaction Invalid");
+            if (!sender) {
+                toast.error("Select a sender");
+            }
+            if (!receiver) {
+                toast.error("Select a receiver");
+            }
+            if (!amount) {
+                toast.error("Enter an amount");
+            }
+            else {
+                toast.error("Transaction Invalid");
+            }
+
         }
         setSender("");
         setReceiver("");
