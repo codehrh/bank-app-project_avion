@@ -129,7 +129,7 @@ export default function Accounts() {
                                                 <RiLockPasswordFill />
                                             </div>
                                             <input
-                                                type="text"
+                                                type="password"
                                                 value={password}
                                                 placeholder="Password"
                                                 onChange={handlePassword}
@@ -168,7 +168,6 @@ export default function Accounts() {
                                     <td className="p-2.5">{user.balance}</td>
                                 </tr>
                             )
-
                         }
                     </tbody>
                 </table>
