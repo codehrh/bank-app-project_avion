@@ -25,6 +25,8 @@ import NotFound from './pages/NotFound.jsx';
 import MoneyTransfer from './components/MoneyTransfer.jsx';
 import Overview from './pages/Overview.jsx'
 import Accounts from './pages/Accounts.jsx';
+import DepositWithdraw from './components/Deposit-Withdraw.jsx';
+import BudgetTracker from './pages/BudgetApp.jsx';
 // import RootLayout from './layouts/RootLayout.jsx';
 // import Menu from './components/Menu.jsx';
 
@@ -50,18 +52,23 @@ const router = createBrowserRouter([
         errorElement: <NotFound />,
       },
       {
-        path: "Accounts",
+        path: "home/accounts",
         element: <Accounts />,
         errorElement: <NotFound />,
       },
       {
-        path: "TransferMoney",
-        element: <MoneyTransfer />,
+        path: "DepositWithdraw",
+        element: <DepositWithdraw />,
         errorElement: <NotFound />,
       },
       {
         path: "TransferMoney",
         element: <MoneyTransfer />,
+        errorElement: <NotFound />,
+      },
+      {
+        path: "BudgetApp",
+        element: <BudgetTracker />,
         errorElement: <NotFound />,
       },
       {
