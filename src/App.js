@@ -23,10 +23,12 @@ import Home from "./pages/Home.jsx";
 import Transactions from './pages/Transactions.jsx';
 import NotFound from './pages/NotFound.jsx';
 import MoneyTransfer from './components/MoneyTransfer.jsx';
-import Overview from './pages/Overview.jsx'
 import Accounts from './pages/Accounts.jsx';
 import DepositWithdraw from './components/Deposit-Withdraw.jsx';
 import BudgetTracker from './pages/BudgetApp.jsx';
+import { GrDashboard } from 'react-icons/gr';
+import Dashboard from "./pages/Dashboard.jsx";
+
 // import RootLayout from './layouts/RootLayout.jsx';
 // import Menu from './components/Menu.jsx';
 
@@ -43,16 +45,16 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Accounts />,
+        element: <Dashboard />,
         errorElement: <NotFound />,
       },
       {
         path: "Dashboard",
-        element: <Overview />,
+        element: <Dashboard />,
         errorElement: <NotFound />,
       },
       {
-        path: "home/accounts",
+        path: "Accounts",
         element: <Accounts />,
         errorElement: <NotFound />,
       },

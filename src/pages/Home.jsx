@@ -1,3 +1,5 @@
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import DefaultSidebar from "../layouts/DefaultSidebar.jsx";
 
 
@@ -7,23 +9,27 @@ import DefaultSidebar from "../layouts/DefaultSidebar.jsx";
 //rr import
 import { Outlet } from "react-router";
 
-export default function Home() {
-    return (
-        <div className="MainContainer">   <div className="nav">
-            <div className="leftnav">
-            </div>
-            <div className="rightnav">
-            </div>
-        </div>
 
-            <div className="mainContainer">
-                <div className="leftContainer">
-                    <DefaultSidebar />
-                </div>
-                <div className="rightContainer">
-                    <Outlet />
-                </div>
+
+export default function Home() {
+
+
+    return (
+
+        < div className="mainContainer" >
+            <div className="leftContainer">
+                <DefaultSidebar />
             </div>
-        </div>
+
+            <div className="rightContainer">
+                <body className="flex flex-col items-center justify-center h-screen bg-gradient-to-l from-sky-300 via-yellow-200 to-yellow-100">
+                    <Outlet />
+                    <ToastContainer />
+                </body>
+            </div>
+
+
+        </div >
+
     )
 }

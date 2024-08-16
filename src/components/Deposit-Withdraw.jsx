@@ -53,53 +53,55 @@ export default function MoneyTransfer() {
     };
 
     return (
-        <div className="moneyTransfer">
-            {
-                <div>
-                    {users.map((user) => {
-                        return (
+        <div className="max-w-[600px] bg-slate-200 items-center gap-20 p-5 rounded-2xl shadow-2xl p-2.5">
+            <div className="moneyTransfer">
+                {
+                    <div>
+                        {users.map((user) => {
+                            return (
 
-                            <div key={user.id}>
-                                {user.name} - {user.balance}
-                            </div>
-                        );
-                    })}
-                    <button onClick={() => setShow(!show)}>
-                        {show ? "Hide Form" : "Show Form"}{/* show is inversely proportional to value - if show is true, value is false; if show is false, the value is true */}
-                    </button>
-                </div>
-            }
-            {show && (
-                <form onSubmit={(event) => {
-                    event.preventDefault();
-                    handleTransaction();
-                }}>
-                    <label>User:</label>
-                    <input
-                        type="text"
-                        value={user}
-                        onChange={(event) => setUser(event.target.value)}
-                    ></input>{" "}
-                    <br />
-                    <label>Amount:</label>
-                    <input
-                        type="text"
-                        value={amount}
-                        onChange={(event) => setAmount(event.target.value)}
-                    ></input>{" "}
-                    <br />
-                    <label>Transaction Type:</label>
-                    <select
-                        value={transactionType}
-                        onChange={(event) => setTransactionType(event.target.value)}
-                    >
-                        <option value="withdraw">Withdraw</option>
-                        <option value="deposit">Deposit</option>
+                                <div key={user.id}>
+                                    {user.name} - {user.balance}
+                                </div>
+                            );
+                        })}
+                        <button onClick={() => setShow(!show)}>
+                            {show ? "Hide Form" : "Show Form"}{/* show is inversely proportional to value - if show is true, value is false; if show is false, the value is true */}
+                        </button>
+                    </div>
+                }
+                {show && (
+                    <form onSubmit={(event) => {
+                        event.preventDefault();
+                        handleTransaction();
+                    }}>
+                        <label>User:</label>
+                        <input
+                            type="text"
+                            value={user}
+                            onChange={(event) => setUser(event.target.value)}
+                        ></input>{" "}
+                        <br />
+                        <label>Amount:</label>
+                        <input
+                            type="text"
+                            value={amount}
+                            onChange={(event) => setAmount(event.target.value)}
+                        ></input>{" "}
+                        <br />
+                        <label>Transaction Type:</label>
+                        <select
+                            value={transactionType}
+                            onChange={(event) => setTransactionType(event.target.value)}
+                        >
+                            <option value="withdraw">Withdraw</option>
+                            <option value="deposit">Deposit</option>
                         </select>{" "}
-                    <br />
-                    <button type="submit">Confirm Transaction</button>
-                </form>
-            )}
+                        <br />
+                        <button type="submit">Confirm Transaction</button>
+                    </form>
+                )}
+            </div>
         </div>
     );
 }

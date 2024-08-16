@@ -22,12 +22,17 @@ const Sidebar = () => {
         <div className="flex items-start justify-start">
             <div className="h-[100vh] w-64 shadow-2xl text-gray-600 text-[2.5vmin]">
                 <div className="flex items-start gap-[20px] p-5 pl-8 justify-start ">
-                    <h1 className="homelogo">Dinero <img src={bankLogo} alt="logo" className="logo-img"></img> Bank</h1>
+                    <NavLink
+                        to="/Home"
+                    >
+                        <h1 className="homelogo">Dinero <img src={bankLogo} alt="logo" className="logo-img"></img> Bank</h1>
+                    </NavLink>
+
                 </div>
                 <ul className="flex flex-col gap-10 p-5 pl-8 ">
                     <li className="">
                         <NavLink
-                            to="dashboard"
+                            to="Dashboard"
                         >
                             <div className="flex items-center gap-x-2 justify-start">
                                 <RxDashboard />
@@ -78,7 +83,7 @@ const Sidebar = () => {
                     </li>
                     <li className="fixed bottom-0">
                         <NavLink
-                            to="logout"
+                            to="/"
                         >
                             <div className="flex items-center gap-x-2 justify-start mb-10">
                                 <FaUser />
