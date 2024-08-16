@@ -12,7 +12,8 @@
         "name": "Sarah Duterte",
         "username": "sduterte",
         "email": "sduterte@gmail.com",
-        "password": "sduterte123"
+        "password": "sduterte123",
+        "balance": 200000
     },
     {
         "id": 2,

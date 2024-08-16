@@ -34,9 +34,8 @@ export default function Accounts() {
     };
 
 
-    const userExist = (name) => {
+    const userExists = (name) => {
         if (users.find(user => user.name === name)) {
-            toast.error("Username Exist");
         }
     }
     const findUser = (name) => {
@@ -46,14 +45,27 @@ export default function Accounts() {
 
     const handleSignin = (event) => {
         event.preventDefault();
-        let user = {
+
+        if (userExists(username)) {
+            toast.error("Username Already Exists");
+            return;
+        }
+
+        let newUser = {
             id: JSON.stringify(data.length),
             name: name,
             username: username,
             password: password,
+            email: email,
+            balance: 0
         };
-        let bankusers = JSON.parse(data);
-        bankusers.push(user);
+        setUsers([...users, newUser]);
+        setName('');
+        setUsername('');
+        setPass('');
+        setEmail('');
+        setModal(false);
+        toast.success("User Created Successfully");
     }
 
     const toggleModal = () => {
