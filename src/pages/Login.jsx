@@ -96,7 +96,7 @@ export default function Login() {
             </div>
             <div className="max-w-[960px] bg-black-dark items-center gap-20 p-5 rounded-2xl shadow-2xl p-2.5">
                 <div className="max-w-80 grid gap-5">
-                    <h3 className="font-bold text-gray-600 ">User Login</h3>
+                    <h3 className="font-bold text-gray-600 ">Login</h3>
                     <form action="" className="space-y-6 text-black" onSubmit={handleLogin}>
                         <div className="relative">
                             <div className="absolute top-1 left-1 bg-white-medium rounded-full p-2 flex items-center justify-center text-blue-300 iconseffect">

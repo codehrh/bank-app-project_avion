@@ -75,46 +75,50 @@ export default function MoneyTransfer() {
                                 </div>
                             );
                         })}
-                        <button onClick={() => setShow(!show)}>
+                        <button className="bg-gradient-to-r m-3 from-blue-400 to-cyan-200 w-80 font-semibold rounded-full py-1" onClick={() => setShow(!show)}>
                             {show ? "Hide Form" : "Show Form"}{/* show is inversely proportional to value - if show is true, value is false; if show is false, the value is true */}
                         </button>
                     </div>
                 }
                 {show && (
-                    <form onSubmit={(event) => {
+
+                    <form className="flex flex-col items-center" onSubmit={(event) => {
                         event.preventDefault();
                         handleTransaction();
                     }}>
-                        <label>User:</label>
+                        <div>User: </div>
                         <select
                             value={user}
+                            className="w-40 bg-white-50 border border-white-300 text-black-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
                             onChange={(event) => setUser(event.target.value)}
                         >
                             <option value="">Select Account</option>
-                                {users.map((u) => (
-                                    <option key={u.id} value={u.name}>
+                            {users.map((u) => (
+                                <option key={u.id} value={u.name}>
                                     {u.name}
                                 </option>
-                                ))}
+                            ))}
                         </select>
                         <br />
-                        <label>Amount:</label>
+                        <div>Amount: </div>
                         <input
                             type="text"
                             value={amount}
+                            className="bg-white-light py-1 px-2 m-1 rounded-full focus:bg-black-dark focus:outline-none focus:ring-1 focus:ring-neon-blue focus:drop-shadow-lg"
                             onChange={(event) => setAmount(event.target.value)}
                         ></input>{" "}
                         <br />
-                        <label>Transaction Type:</label>
+                        <div>Transaction Type: </div>
                         <select
                             value={transactionType}
+                            className="w-40 bg-white-50 border border-white-300 text-black-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
                             onChange={(event) => setTransactionType(event.target.value)}
                         >
                             <option value="withdraw">Withdraw</option>
                             <option value="deposit">Deposit</option>
                         </select>{" "}
                         <br />
-                        <button type="submit">Confirm Transaction</button>
+                        <button className="bg-gradient-to-r m-1 from-blue-400 to-cyan-200 w-80 font-semibold rounded-full py-1" type="submit">Confirm Transaction</button>
                     </form>
                 )}
             </div>

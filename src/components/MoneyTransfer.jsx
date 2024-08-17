@@ -90,16 +90,17 @@ export default function MoneyTransfer() {
                                 </div>
                             );
                         })}
-                        <button onClick={() => setShow(show ? false : true)}>
+                        <button className="bg-gradient-to-r m-3 from-blue-400 to-cyan-200 w-80 font-semibold rounded-full py-1" onClick={() => setShow(show ? false : true)}>
                             Transfer{/* show is inversely proportional to value - if show is true, value is false; if show is false, the value is true */}
                         </button>
                     </div>
                 }
                 {show && (
-                    <form onSubmit={transferMoney}>
-                        <label>Sender:</label>
+                    <form onSubmit={transferMoney} className="flex flex-col items-center">
+                        <div>Sender:</div>
                         <select
                             value={sender}
+                            className="w-40 bg-white-50 border border-white-300 text-black-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
                             onChange={(event) => setSender(event.target.value)}
                         >
                             <option value="">Select Sender</option>
@@ -110,9 +111,10 @@ export default function MoneyTransfer() {
                             ))}
                         </select>
                         <br />
-                        <label>Receiver:</label>
+                        <div>Receiver: </div>
                         <select
                             value={receiver}
+                            className="w-40 bg-white-50 border border-white-300 text-black-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
                             onChange={(event) => setReceiver(event.target.value)}
                         >
                             <option value="">Select Receiver</option>
@@ -123,19 +125,20 @@ export default function MoneyTransfer() {
                             ))}
                         </select>
                         <br />
-                        <label>Amount:</label>
+                        <div>Amount: </div>
                         <input
                             type="value"
                             value={amount}
                             onChange={(event) => setAmount(event.target.value)}
+                            className="bg-white-light py-1 px-2 m-1 rounded-full focus:bg-black-dark focus:outline-none focus:ring-1 focus:ring-neon-blue focus:drop-shadow-lg"
                             min="0"
                         />
                         <br />
-                        <button type="submit">Confirm Transfer</button>
+                        <button className="bg-gradient-to-r m-1 from-blue-400 to-cyan-200 w-80 font-semibold rounded-full py-1" type="submit">Confirm Transfer</button>
                     </form>
                 )}
             </div>
             <ToastContainer />
-        </div>
+        </div >
     );
 }

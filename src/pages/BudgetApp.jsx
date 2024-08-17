@@ -70,56 +70,58 @@ export default function BudgetTracker() {
                 <div>
                     {users.map((u) => (
                         <div key={u.id}>
-                            <h3>{u.name} - Balance: {formattedBalance.format(u.balance.toFixed(2))}</h3>
+                            <div>{u.name} - Balance: {formattedBalance.format(u.balance.toFixed(2))}</div>
                             <ul>
                                 {u.expenses && u.expenses.map((expense, index) => (
                                     <li key={index}>
                                         {expense.description}: ${expense.cost.toFixed(2)}
-                                        <button onClick={() => deleteExpense(u.name, index)}>Delete</button>
+                                        <button className="bg-gradient-to-r m-1 from-blue-400 to-cyan-200 w-80 font-semibold rounded-full py-1" onClick={() => deleteExpense(u.name, index)}>Delete</button>
                                     </li>
                                 ))}
                             </ul>
                         </div>
                     ))}
                 </div>
-                <button onClick={() => setShow(!show)}>
+                <button className="bg-gradient-to-r m-1 from-blue-400 to-cyan-200 w-80 font-semibold rounded-full py-1" onClick={() => setShow(!show)}>
                     {show ? "Hide Form" : "Add Expense"}
                 </button>
 
                 {show && (
                     <div>
-                        <form onSubmit={(event) => {
+                        <form className="flex flex-col items-center" onSubmit={(event) => {
                             event.preventDefault();
                             addExpense();
                         }}>
-                            <label>User:</label>
+                            <div>User:</div>
                             <select
-                            value={user}
-                            onChange={(event) => setUser(event.target.value)}
-                        >
-                            <option value="">Select User</option>
+                                value={user}
+                                className="w-40 bg-white-50 border border-white-300 text-black-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
+                                onChange={(event) => setUser(event.target.value)}
+                            >
+                                <option value="">Select User</option>
                                 {users.map((u) => (
                                     <option key={u.id} value={u.name}>
-                                    {u.name}
-                                </option>
+                                        {u.name}
+                                    </option>
                                 ))}
-                        </select>
+                            </select>
                             <br />
-                            <label>Expense Description:</label>
+                            <div >Expense Description:</div>
                             <input
                                 type="text"
                                 value={expenseDescription}
+                                className="bg-white-light py-1 px-2 m-1 rounded-full focus:bg-black-dark focus:outline-none focus:ring-1 focus:ring-neon-blue focus:drop-shadow-lg"
                                 onChange={(event) => setExpenseDescription(event.target.value)}
                             />
                             <br />
-                            <label>Expense Amount:</label>
+                            <div >Expense Amount:</div>
                             <input
                                 type="text"
                                 value={expenseAmount}
-                                onChange={(event) => setExpenseAmount(event.target.value)}
+                                className="bg-white-light py-1 px-2 m-1 rounded-full focus:bg-black-dark focus:outline-none focus:ring-1 focus:ring-neon-blue focus:drop-shadow-lg"
                             />
                             <br />
-                            <button type="submit">Add Expense</button>
+                            <button className="bg-gradient-to-r m-1 from-blue-400 to-cyan-200 w-80 font-semibold rounded-full py-1" type="submit">Add Expense</button>
                         </form>
                     </div>
                 )}

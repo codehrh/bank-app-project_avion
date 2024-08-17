@@ -87,15 +87,40 @@ export default function Accounts() {
 
     return (
         <div>
+            <div className="max-w-[600px] bg-slate-100 item-start gap-20 p-5 rounded-2xl shadow-2xl p-2.5">
+                <table className="p-6 divide-y divide-slate-200 ">
+                    <thead className="">
+                        <tr>
+                            <th>Name</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody className="">
+                        {
+                            users.map((user) =>
+                                <tr className="odd:bg-white even:bg-slate-50">
+                                    <td className="p-2.5">{user.name}</td>
+                                    <td className="p-2.5">{user.username}</td>
+                                    <td className="p-2.5">{user.email}</td>
+                                    <td className="p-2.5">{formattedBalance.format(user.balance)}</td>
+                                </tr>
+                            )
+                        }
+                    </tbody>
+                </table>
+
+            </div>
             <div>
-                <button onClick={toggleModal} className="bg-gradient-to-r from-blue-400 to-cyan-200 w-80 font-semibold rounded-full py-2">Add User</button>
+                <button onClick={toggleModal} className="bg-gradient-to-r m-3 from-blue-400 to-cyan-200 w-80 font-semibold rounded-full py-1">Add User</button>
                 {modal && (
                     <div className="modal">
                         <div onClick={toggleModal} className="overlay"></div>
                         <div className="modal-content">
                             <div className="max-w-[960px] bg-slate-200 items-center gap-20 p-5 rounded-2xl shadow-2xl p-2.5">
                                 <div className="max-w-80 grid gap-5">
-                                    <h3 className="font-bold text-gray-600 ">Create User</h3>
+                                    <h3 className="font-bold text-gray-600 ">Add User</h3>
                                     <form action="" className="space-y-6 text-black" onSubmit={handleSignin}>
                                         <div className="relative">
                                             <div className="absolute top-1 left-1 bg-white-medium rounded-full p-2 flex items-center justify-center text-blue-300 iconseffect">
@@ -153,31 +178,6 @@ export default function Accounts() {
                         </div>
                     </div>
                 )}
-            </div>
-            <div className="max-w-[600px] bg-slate-100 item-start gap-20 p-5 rounded-2xl shadow-2xl p-2.5">
-                <table className="p-6 divide-y divide-slate-200 ">
-                    <thead className="">
-                        <tr>
-                            <th>Name</th>
-                            <th>Username</th>
-                            <th>Email</th>
-                            <th>Balance</th>
-                        </tr>
-                    </thead>
-                    <tbody className="">
-                        {
-                            users.map((user) =>
-                                <tr className="odd:bg-white even:bg-slate-50">
-                                    <td className="p-2.5">{user.name}</td>
-                                    <td className="p-2.5">{user.username}</td>
-                                    <td className="p-2.5">{user.email}</td>
-                                    <td className="p-2.5">{formattedBalance.format(user.balance)}</td>
-                                </tr>
-                            )
-                        }
-                    </tbody>
-                </table>
-
             </div>
             <ToastContainer />
         </div>
