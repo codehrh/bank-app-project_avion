@@ -70,7 +70,7 @@ export default function BudgetTracker() {
                 <div>
                     {users.map((u) => (
                         <div key={u.id}>
-                            <div>{u.name} - Balance: {formattedBalance.format(u.balance.toFixed(2))}</div>
+                            <div>{u.firstname} {u.lastname} - Balance: {formattedBalance.format(u.balance.toFixed(2))}</div>
                             <ul>
                                 {u.expenses && u.expenses.map((expense, index) => (
                                     <li key={index}>

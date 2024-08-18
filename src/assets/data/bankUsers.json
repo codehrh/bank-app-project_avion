@@ -1,6 +1,24 @@
 [
     {
         "id": 0,
+        "firstname": "Hara",
+        "lastname": "Honasan",
+        "username": "harah",
+        "password": "user123",
+        "type": "employee",
+        "balance": 0
+    },
+    {
+        "id": 1,
+        "firstname": "Cara",
+        "lastname": "Cajes",
+        "username": "carac",
+        "password": "user123",
+        "type": "employee",
+        "balance": 0
+    },
+    {
+        "id": 2,
         "firstname": "Juan",
         "lastname": "Dela Cruz",
         "username": "jdelacruz",
@@ -10,7 +28,7 @@
         "balance": 30000
     },
     {
-        "id": 1,
+        "id": 3,
         "firstname": "Sarah",
         "lastname": "Duterte",
         "username": "sduterte",
@@ -20,7 +38,7 @@
         "balance": 200000
     },
     {
-        "id": 2,
+        "id": 4,
         "firstname": "Jejomar",
         "lastname": "Binay",
         "username": "jbinay",
@@ -30,7 +48,7 @@
         "balance": 75000
     },
     {
-        "id": 3,
+        "id": 5,
         "firstname": "Janet",
         "lastname": "Napoles",
         "username": "jnapoles",
@@ -40,7 +58,7 @@
         "balance": 100000
     },
     {
-        "id": 4,
+        "id": 6,
         "firstname": "Ninoy",
         "lastname": "Aquino",
         "username": "naquino",
@@ -50,7 +68,7 @@
         "balance": 290000
     },
     {
-        "id": 5,
+        "id": 7,
         "firstname": "Chiz",
         "lastname": "Escudero",
         "username": "cescudero",

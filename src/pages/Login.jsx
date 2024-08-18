@@ -1,7 +1,6 @@
 
 import Logo from "../components/Logo";
 import { useState, useEffect } from 'react';
-import empLogin from "../assets/data/empLogin.json";
 import userLogin from "../assets/data/bankUsers.json";
 import { useNavigate } from 'react-router-dom';
 import { FaUser } from "react-icons/fa";
@@ -13,11 +12,9 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function Login() {
     const [user, setUser] = useState("");
     const [pass, setPass] = useState("");
-    const { username, password } = empLogin;
-    const { uusername, upassword } = userLogin;
+    const { username, password } = userLogin;
     const [credentials, setCredentials] = useState("");
     const navigate = useNavigate();
-    const [usercreds, setUsercreds] = useState("");
 
     //not in use
     // const [userError] = useState('')
@@ -26,10 +23,7 @@ export default function Login() {
 
     //using the imported login file with credentials
     useEffect(() => {
-        setCredentials(empLogin);
-    }, []);
-    useEffect(() => {
-        setUsercreds(userLogin);
+        setCredentials(userLogin);
     }, []);
 
     const handleUser = (event) => {
@@ -44,10 +38,7 @@ export default function Login() {
 
         event.preventDefault();
 
-        const matchedUser = usercreds.find(
-            ucreds => ucreds.uusername == user && ucreds.upassword == password
-        );
-        const matchedEmp = credentials.find(
+        const matchedUser = credentials.find(
             cred => cred.username == user && cred.password == pass
         );
 
@@ -56,12 +47,7 @@ export default function Login() {
             localStorage.setItem('loggedInUser', JSON.stringify(matchedUser));
             navigate('/Home');
             toast.success("Login Successful");
-        } else if (matchedEmp) {
-            localStorage.setItem('loggedInUser', JSON.stringify(matchedEmp));
-            navigate('/Home');
-            toast.success("Login Successful");
         }
-
         else {
             toast.error("Incorrect Credentials");
         }
