@@ -19,7 +19,7 @@ const UserSidebar = () => {
 
     return (
         <div className="flex items-start justify-start">
-            <div className="h-[100vh] w-64 shadow-2xl text-gray-600 text-[2.5vmin]">
+            <div className="h-[100vh] w-1/7 shadow-2xl text-gray-600 text-[2.5vmin]">
                 <div className="flex items-start gap-[20px] p-5 pl-8 justify-start ">
                     <NavLink
                         to="/Home"

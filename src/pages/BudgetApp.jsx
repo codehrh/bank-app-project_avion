@@ -15,6 +15,7 @@ export default function BudgetTracker() {
     const [user, setUser] = useState("");
     const [expenseDescription, setExpenseDescription] = useState("");
     const [expenseAmount, setExpenseAmount] = useState("");
+    const filteredUsers = users.filter(u => u.type === "user");
 
     const userExist = (name) => {
         return users.find(user => user.name === name);
@@ -63,12 +64,11 @@ export default function BudgetTracker() {
         setUsers(updatedUsers);
         toast.success(`${expenseDescription} successfully deleted to Expenses`);
     };
-
     return (
         <div className="max-w-[600px] bg-slate-100 items-center gap-20 p-5 rounded-2xl shadow-2xl p-2.5">
             <div className="">
                 <div>
-                    {users.map((u) => (
+                    {filteredUsers.map((u) => (
                         <div key={u.id}>
                             <div>{u.firstname} {u.lastname} - Balance: {formattedBalance.format(u.balance.toFixed(2))}</div>
                             <ul>

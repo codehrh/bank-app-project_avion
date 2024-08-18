@@ -4,6 +4,8 @@ import DefaultSidebar from "../layouts/DefaultSidebar.jsx";
 import UserSidebar from "../layouts/UserSidebar.jsx";
 import EmpSidebar from "../layouts/EmpSidebar.jsx";
 import { useState, useEffect } from "react";
+import { FaUserCircle } from "react-icons/fa";
+
 
 
 
@@ -24,9 +26,9 @@ export default function Home() {
     }, []);
 
     const renderSidebar = () => {
-        if (user?.type === "user") {
+        if (user?.type === "User") {
             return <UserSidebar />;
-        } else if (user?.type === "employee") {
+        } else if (user?.type === "Employee") {
             return <EmpSidebar />;
         }
     };
@@ -40,7 +42,18 @@ export default function Home() {
             </div>
 
             <div className="rightContainer">
-                <body className="flex flex-col items-center justify-center h-screen bg-gradient-to-l from-sky-300 via-yellow-200 to-yellow-100">
+                <body className="flex flex-col items-start justify-start text-left h-screen bg-gradient-to-l from-sky-300 via-yellow-200 to-yellow-100">
+                    <div className="fixed top-4 right-4 flex items-start">
+                        <div><FaUserCircle size={33} color="#003566" /></div>
+                        <div className="text-left pl-0.5 pr-1">
+                            <div className="font-bold text-sm m-0 p-0">
+                                {user.firstname} {user.lastname}
+                            </div>
+                            <div className="text-xs m-0 p-0 italic">
+                                {user.type}
+                            </div>
+                        </div>
+                    </div>
                     <Outlet />
                 </body>
             </div>

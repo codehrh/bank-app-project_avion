@@ -5,7 +5,7 @@
         "lastname": "Honasan",
         "username": "harah",
         "password": "user123",
-        "type": "employee",
+        "type": "Employee",
         "balance": 0
     },
     {
@@ -14,7 +14,7 @@
         "lastname": "Cajes",
         "username": "carac",
         "password": "user123",
-        "type": "employee",
+        "type": "Employee",
         "balance": 0
     },
     {
@@ -24,7 +24,7 @@
         "username": "jdelacruz",
         "email": "jdelacruz@gmail.com",
         "password": "jdelacruz123",
-        "type": "user",
+        "type": "User",
         "balance": 30000
     },
     {
@@ -34,7 +34,7 @@
         "username": "sduterte",
         "email": "sduterte@gmail.com",
         "password": "sduterte123",
-        "type": "user",
+        "type": "User",
         "balance": 200000
     },
     {
@@ -44,7 +44,7 @@
         "username": "jbinay",
         "email": "jbinay@gmail.com",
         "password": "jbinay123",
-        "type": "user",
+        "type": "User",
         "balance": 75000
     },
     {
@@ -54,7 +54,7 @@
         "username": "jnapoles",
         "email": "jnapoles@gmail.com",
         "password": "jnapoles123",
-        "type": "user",
+        "type": "User",
         "balance": 100000
     },
     {
@@ -64,7 +64,7 @@
         "username": "naquino",
         "email": "naquino@gmail.com",
         "password": "naquino123",
-        "type": "user",
+        "type": "User",
         "balance": 290000
     },
     {
@@ -74,7 +74,7 @@
         "username": "cescudero",
         "email": "cescudero@gmail.com",
         "password": "cescudero123",
-        "type": "user",
+        "type": "User",
         "balance": 400000
     }
 ]

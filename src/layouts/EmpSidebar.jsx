@@ -9,6 +9,9 @@ import { NavLink } from "react-router-dom";
 import { FaHandHoldingUsd } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
 import { FaPiggyBank } from "react-icons/fa";
+import { MdOutlineLogout } from "react-icons/md";
+
+
 
 
 
@@ -76,7 +79,7 @@ const EmpSidebar = () => {
                             to="/"
                         >
                             <div className="flex items-center gap-x-2 justify-start mb-10">
-                                <FaUser />
+                                <MdOutlineLogout />
                                 <span>Logout</span>
                             </div>
                         </NavLink>
