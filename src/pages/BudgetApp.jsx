@@ -74,8 +74,8 @@ export default function BudgetTracker() {
                             <ul>
                                 {u.expenses && u.expenses.map((expense, index) => (
                                     <li key={index}>
-                                        {expense.description}: ${expense.cost.toFixed(2)}
-                                        <button className="bg-gradient-to-r m-1 from-blue-400 to-cyan-200 w-80 font-semibold rounded-full py-1" onClick={() => deleteExpense(u.name, index)}>Delete</button>
+                                        {expense.description}: Php{expense.cost.toFixed(2)}
+                                        <button className="bg-gradient-to-r m-1 from-blue-400 to-cyan-200 w-20 font-semibold rounded-full py-1" onClick={() => deleteExpense(u.name, index)}>Delete</button>
                                     </li>
                                 ))}
                             </ul>
@@ -96,6 +96,7 @@ export default function BudgetTracker() {
                             <select
                                 value={user}
                                 className="w-40 bg-white-50 border border-white-300 text-black-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
+
                                 onChange={(event) => setUser(event.target.value)}
                             >
                                 <option value="">Select User</option>
@@ -106,7 +107,7 @@ export default function BudgetTracker() {
                                 ))}
                             </select>
                             <br />
-                            <div >Expense Description:</div>
+                            <label >Expense Description:</label>
                             <input
                                 type="text"
                                 value={expenseDescription}
@@ -114,11 +115,12 @@ export default function BudgetTracker() {
                                 onChange={(event) => setExpenseDescription(event.target.value)}
                             />
                             <br />
-                            <div >Expense Amount:</div>
+                            <label >Expense Amount:</label>
                             <input
                                 type="text"
-                                value={expenseAmount}
                                 className="bg-white-light py-1 px-2 m-1 rounded-full focus:bg-black-dark focus:outline-none focus:ring-1 focus:ring-neon-blue focus:drop-shadow-lg"
+                                value={expenseAmount}
+                                onChange={(event) => setExpenseAmount(event.target.value)}
                             />
                             <br />
                             <button className="bg-gradient-to-r m-1 from-blue-400 to-cyan-200 w-80 font-semibold rounded-full py-1" type="submit">Add Expense</button>

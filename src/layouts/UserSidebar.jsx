@@ -9,17 +9,13 @@ import { NavLink } from "react-router-dom";
 import { FaHandHoldingUsd } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
 import { FaPiggyBank } from "react-icons/fa";
-import UserSidebar from "./UserSidebar";
-import EmpSidebar from "./EmpSidebar";
+
 
 
 import bankLogo from "../assets/images/dinerobankicon.png";
 
-//check user type
 
-
-const Sidebar = () => {
-
+const UserSidebar = () => {
 
     return (
         <div className="flex items-start justify-start">
@@ -100,4 +96,4 @@ const Sidebar = () => {
     );
 };
 
-export default Sidebar;
+export default UserSidebar;

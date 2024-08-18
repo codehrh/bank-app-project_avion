@@ -3,13 +3,16 @@
         "id": 0,
         "username": "harah",
         "password": "user123",
-        "name": "Hara",
-        "balance": 90000 
+        "firstname": "Hara",
+        "lastname": "Honasan",
+        "type": "employee"
     },
     {
+        "id": 1,
         "username": "carac",
         "password": "user123",
-        "name": "Cara",
-        "balance": 90000
+        "firstname": "Cara",
+        "lastname": "Cajes",
+        "type": "employee"
     }
 ]

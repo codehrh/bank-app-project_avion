@@ -1,34 +1,62 @@
 [
     {
         "id": 0,
-        "name": "Juan Dela Cruz",
+        "firstname": "Juan",
+        "lastname": "Dela Cruz",
         "username": "jdelacruz",
         "email": "jdelacruz@gmail.com",
         "password": "jdelacruz123",
+        "type": "user",
         "balance": 30000
     },
     {
         "id": 1,
-        "name": "Sarah Duterte",
+        "firstname": "Sarah",
+        "lastname": "Duterte",
         "username": "sduterte",
         "email": "sduterte@gmail.com",
         "password": "sduterte123",
+        "type": "user",
         "balance": 200000
     },
     {
         "id": 2,
-        "name": "Jejomar Binay",
+        "firstname": "Jejomar",
+        "lastname": "Binay",
         "username": "jbinay",
         "email": "jbinay@gmail.com",
         "password": "jbinay123",
+        "type": "user",
         "balance": 75000
     },
     {
         "id": 3,
-        "name": "Janet Napoles",
+        "firstname": "Janet",
+        "lastname": "Napoles",
         "username": "jnapoles",
         "email": "jnapoles@gmail.com",
         "password": "jnapoles123",
+        "type": "user",
         "balance": 100000
+    },
+    {
+        "id": 4,
+        "firstname": "Ninoy",
+        "lastname": "Aquino",
+        "username": "naquino",
+        "email": "naquino@gmail.com",
+        "password": "naquino123",
+        "type": "user",
+        "balance": 290000
+    },
+    {
+        "id": 5,
+        "firstname": "Chiz",
+        "lastname": "Escudero",
+        "username": "cescudero",
+        "email": "cescudero@gmail.com",
+        "password": "cescudero123",
+        "type": "user",
+        "balance": 400000
     }
 ]
