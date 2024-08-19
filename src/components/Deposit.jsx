@@ -101,7 +101,7 @@ export default function Deposit() {
                 <br />
                 <button className="w-full bg-gradient-to-r from-blue-400 to-cyan-200 font-semibold rounded-full py-2 mt-5" type="submit">Deposit</button>
             </form>
-            <ToastContainer />
+
         </div>
     );
 }
