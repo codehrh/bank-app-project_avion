@@ -1,6 +1,5 @@
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import DefaultSidebar from "../layouts/DefaultSidebar.jsx";
 import UserSidebar from "../layouts/UserSidebar.jsx";
 import EmpSidebar from "../layouts/EmpSidebar.jsx";
 import { useState, useEffect } from "react";
