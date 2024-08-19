@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import data from "../assets/data/bankUsers.json";
 import { ToastContainer, toast } from "react-toastify";
 
-
 const formattedBalance = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'PHP',
@@ -10,87 +9,87 @@ const formattedBalance = new Intl.NumberFormat('en-US', {
     maximumFractionDigits: 2,
 });
 
-export default function SendMoney() {
+export default function ReceiveMoney() {
     const [users, setUsers] = useState(data);
-    const [sender, setSender] = useState("");
     const [receiver, setReceiver] = useState("");
     const [amount, setAmount] = useState("");
     const [loggedInUser, setLoggedInUser] = useState(null);
 
-
-    const getFilteredUsers = (excludeUser) => {
-        return users.filter(user => user.name !== excludeUser);
+    const getFilteredUsers = () => {
+        return users.filter(user => user.type === "User" && user.username !== loggedInUser?.username); 
     }
 
-    const userExist = (name) => {
-        return users.find(user => user.name === name);
+    const userExist = (username) => { 
+        return users.find(user => user.username === username);
     }
 
-    const findUser = (name) => {
-        let foundUser = users.filter((user) => user.name === name);
-        return foundUser[0];
+    const findUser = (username) => { 
+        return users.find(user => user.username === username);
     }
 
     const transferMoney = () => {
         const newAmount = Number(amount);
         if (
-            userExist(sender) &&
+            loggedInUser &&
             userExist(receiver) &&
-            sender !== receiver &&
+            loggedInUser.username !== receiver && 
             newAmount > 0
         ) {
-            const senderInfo = findUser(sender);
+            const senderInfo = findUser(loggedInUser.username); 
             if (senderInfo.balance >= newAmount) {
                 const updateUsers = users.map((user) => {
-                    if (user.name === sender) {
+                    if (user.username === loggedInUser.username) { 
                         return { ...user, balance: user.balance - newAmount };
 
-                    } else if (user.name === receiver) {
+                    } else if (user.username === receiver) { 
                         return { ...user, balance: user.balance + newAmount };
 
                     }
                     return user;
                 });
                 setUsers(updateUsers);
-                toast.success(`Php${amount} has been transfered Successfully to ${receiver}`);
+                toast.success(`Php${amount} has been transferred successfully to ${receiver}`);
             } else {
-                toast.error("Not Enough Balance");
+                toast.error("Not enough balance");
             }
         } else {
-            if (!sender) {
-                toast.error("Select a sender");
-            }
             if (!receiver) {
                 toast.error("Select a receiver");
             }
             if (!amount) {
                 toast.error("Enter an amount");
+            } else {
+                toast.error("Transaction invalid");
             }
-            else {
-                toast.error("Transaction Invalid");
-            }
-
         }
-        setSender("");
         setReceiver("");
         setAmount("");
     };
+
     useEffect(() => {
         const storedUser = JSON.parse(localStorage.getItem('loggedInUser'));
         if (storedUser) {
             setLoggedInUser(storedUser);
-            setSender(storedUser.name); // Set the logged-in user as the sender
         }
     }, []);
 
+    useEffect(() => {
+        if (loggedInUser) {
+            const updatedUser = users.find(user => user.username === loggedInUser.username);
+            if (updatedUser) {
+                setLoggedInUser(updatedUser);
+            }
+        }
+    }, [users, loggedInUser]);
+
     return (
         <div className="">
-            <div className="font-bold text-lg" >Send Money</div>
-            <form onSubmit={transferMoney} className="flex flex-col text-sm p-1">
+            <div className=""><span className="font-bold text-lg">Send Money</span></div>
+            <form onSubmit={(e) => { e.preventDefault(); transferMoney(); }} className="flex flex-col items-start text-sm p-1">
                 <div>
                     <div className="mx-1 mb-2">Account Name : {loggedInUser?.firstname} {loggedInUser?.lastname}</div>
+                    <div className="mx-1 mb-2">Balance: {loggedInUser ? formattedBalance.format(loggedInUser.balance) : "N/A"}</div>
                 </div>
-
                 <div className="mx-1">Receiver's Name : </div>
                 <select
                     value={receiver}
@@ -98,25 +97,25 @@ export default function SendMoney() {
                     onChange={(event) => setReceiver(event.target.value)}
                 >
                     <option value="">Select Receiver</option>
-                    {getFilteredUsers(sender).map(user => (
-                        <option key={user.name} value={user.name}>
-                            {user.name}
+                    {getFilteredUsers().map(user => (
+                        <option key={user.username} value={user.username}>
+                            {user.firstname} {user.lastname}
                         </option>
                     ))}
                 </select>
                 <br />
                 <div className="mx-1">Amount: </div>
                 <input
-                    type="value"
+                    type="number"
                     value={amount}
                     onChange={(event) => setAmount(event.target.value)}
                     className="w-full bg-white-light py-2 px-4 rounded-full focus:bg-black-dark focus:outline-none focus:ring-1 focus:ring-neon-blue focus:drop-shadow-lg"
                     min="0"
                 />
                 <br />
-                <button className="w-full bg-gradient-to-r from-blue-400 to-cyan-200 font-semibold rounded-full py-2 mt-5" type="submit">Send</button>
-            </form >
+                <button className="w-full bg-gradient-to-r from-blue-400 to-cyan-200 font-semibold rounded-full py-2 mt-5" type="submit">Confirm</button>
+            </form>
             <ToastContainer />
-        </div >
+        </div>
     );
 }

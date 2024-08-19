@@ -86,7 +86,7 @@ export default function Deposit() {
                     <option value="">Select Account</option>
                     {users.map((u) => (
                         <option key={u.id} value={u.name}>
-                            {u.name}
+                            {u.firstname} {u.lastname}
                         </option>
                     ))}
                 </select>

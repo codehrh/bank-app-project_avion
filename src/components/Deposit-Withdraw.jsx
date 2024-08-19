@@ -11,7 +11,7 @@ const formattedBalance = new Intl.NumberFormat('en-US', {
 });
 
 export default function MoneyTransfer() {
-    const [users, setUsers] = useState(data.filter(user => user.type === 'user'));
+    const [users, setUsers] = useState(data.filter(user => user.type === 'User'));
     const [show, setShow] = useState(false); // flag to hide or show elements
     const [user, setUser] = useState("");
     const [amount, setAmount] = useState("");
