@@ -1,5 +1,5 @@
 
-import Logo from "../components/Logo";
+import Logo from "../DepositMoney.jsx/Logo";
 import { useState, useEffect } from 'react';
 import userLogin from "../assets/data/bankUsers.json";
 import { useNavigate } from 'react-router-dom';

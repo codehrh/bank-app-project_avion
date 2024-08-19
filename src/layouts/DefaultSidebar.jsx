@@ -1,4 +1,4 @@
-import Logo from "../components/Logo";
+import Logo from "../DepositMoney.jsx/Logo";
 import { RxDashboard } from "react-icons/rx";
 import { IoCardSharp } from "react-icons/io5";
 import { GrTransaction } from "react-icons/gr";

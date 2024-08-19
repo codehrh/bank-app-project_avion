@@ -17,17 +17,20 @@ const formattedBalance = new Intl.NumberFormat('en-US', {
 
 
 export default function Accounts() {
-    const [users, setUsers] = useState(data);
-    const [modal, setModal] = useState(false);
-    const [name, setName] = useState('');
+    const [users, setUsers] = useState(data.filter(user => user.type === 'User'));
+    const [firstname, setFirstName] = useState('');
+    const [lastname, setLastName] = useState('');
     const [password, setPass] = useState("");
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
 
 
 
-    const handleName = (event) => {
-        setName(event.target.value);
+    const handleFirstName = (event) => {
+        setFirstName(event.target.value);
+    };
+    const handleLastName = (event) => {
+        setLastName(event.target.value);
     };
     const handleUsername = (event) => {
         setUsername(event.target.value);
@@ -40,144 +43,169 @@ export default function Accounts() {
     };
 
 
-    const userExists = (name) => {
-        if (users.find(user => user.name === name)) {
-        }
-    }
+    const userExists = (username) => {
+        return users.some(user => user.username === username);
+    };
+
+    const emailExists = (email) => {
+        return users.some(user => user.email === email);
+    };
+
+
     const findUser = (name) => {
-        let foundUser = users.filter((user) => user.name === name);
+        let foundUser = users.filter((user) => user.name == name);
         return foundUser[0];
     }
 
     const handleSignin = (event) => {
         event.preventDefault();
-
-        if (userExists(username)) {
-            toast.error("Username Already Exists");
+        const emailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!firstname) {
+            toast.error("Enter your first name!");
+        }
+        if (!lastname) {
+            toast.error("Enter your last name!");
+        }
+        if (!username) {
+            toast.error("Enter your username!");
+        } else if (userExists(username)) {
+            toast.error("Username already exists!");
             return;
         }
+        if (!email) {
+            toast.error("Enter your email!");
+        } else if (!emailFormat.test(email)) {
+            toast.error("Invalid email format!");
+            return;
+        } else if (emailExists(email)) {
+            toast.error("Email already exists. Use a different email!");
+            return;
+        } if (!password) {
+            toast.error("Enter your password!");
+        } else {
+            const newUser = {
+                id: JSON.stringify(data.length), // Incrementing the ID based on the length
+                firstname: firstname,
+                lastname: lastname,
+                username: username,
+                password: password,
+                email: email,
+                balance: 0
+            };
 
-        let newUser = {
-            id: JSON.stringify(data.length),
-            name: name,
-            username: username,
-            password: password,
-            email: email,
-            balance: 0
-        };
-        setUsers([...users, newUser]);
-        setName('');
-        setUsername('');
-        setPass('');
-        setEmail('');
-        setModal(false);
-        toast.success("User Created Successfully");
-    }
+            setUsers([...users, newUser]);
 
-    const toggleModal = () => {
-        setModal(!modal);
+            setFirstName('');
+            setLastName('');
+            setUsername('');
+            setPass('');
+            setEmail('');
+
+            toast.success("User created successfully");
+        }
     };
-
-    if (modal) {
-        document.body.classList.add('active-modal')
-    } else {
-        document.body.classList.remove('active-modal')
-    }
 
 
     return (
         <div>
-            <div className="max-w-[600px] bg-slate-100 item-start gap-20 p-5 rounded-2xl shadow-2xl p-2.5">
-                <table className="p-6 divide-y divide-slate-200 ">
-                    <thead className="">
-                        <tr>
-                            <th>Name</th>
-                            <th>Username</th>
-                            <th>Email</th>
-                            <th>Balance</th>
-                        </tr>
-                    </thead>
-                    <tbody className="">
-                        {
-                            users.map((user) =>
-                                <tr className="odd:bg-white even:bg-slate-50">
-                                    <td className="p-2.5">{user.name}</td>
-                                    <td className="p-2.5">{user.username}</td>
-                                    <td className="p-2.5">{user.email}</td>
-                                    <td className="p-2.5">{formattedBalance.format(user.balance)}</td>
+            <div className="min-w-[165vmin] bg-slate-40 items-center gap-20 p-5 rounded-2xl shadow-2xl p-2.5 mt-20 ml-14">
+                <div className="text-xl font-bold p-2.5">Accounts</div>
+                <div className="text-sm p-2 flex item-start">
+                    <table className="p-6 divide-y divide-slate-200 min-w-[100%]">
+                        <thead >
+                            <tr className="">
+                                <th className="p-2.5">Name</th>
+                                <th className="p-2.5">Username</th>
+                                <th className="p-2.5">Email</th>
+                                <th className="p-2.5">Current Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody className="mt-2">
+                            {users.map((u) => (
+                                <tr key={u.id} className="odd:bg-white even:bg-slate-50">
+                                    <td className="p-2.5">{u.firstname} {u.lastname}</td>
+                                    <td className="p-2.5">{u.username}</td>
+                                    <td className="p-2.5">{u.email}</td>
+                                    <td className="p-2.5">{formattedBalance.format(u.balance)}</td>
                                 </tr>
-                            )
-                        }
-                    </tbody>
-                </table>
-
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div>
-                <button onClick={toggleModal} className="bg-gradient-to-r m-3 from-blue-400 to-cyan-200 w-80 font-semibold rounded-full py-1">Add User</button>
-                {modal && (
-                    <div className="modal">
-                        <div onClick={toggleModal} className="overlay"></div>
-                        <div className="modal-content">
-                            <div className="max-w-[960px] bg-slate-200 items-center gap-20 p-5 rounded-2xl shadow-2xl p-2.5">
-                                <div className="max-w-80 grid gap-5">
-                                    <h3 className="font-bold text-gray-600 ">Add User</h3>
-                                    <form action="" className="space-y-6 text-black" onSubmit={handleSignin}>
-                                        <div className="relative">
-                                            <div className="absolute top-1 left-1 bg-white-medium rounded-full p-2 flex items-center justify-center text-blue-300 iconseffect">
-                                                <FaRegUserCircle />
-                                            </div>
-                                            <input
-                                                type="text"
-                                                value={name}
-                                                placeholder="Name"
-                                                onChange={handleName}
-                                                className="w-80 bg-white-light py-2 px-12 rounded-full focus:bg-black-dark focus:outline-none focus:ring-1 focus:ring-neon-blue focus:drop-shadow-lg" />
-                                        </div>
-                                        <div className="relative">
-                                            <div className="absolute top-1 left-1 bg-white-medium rounded-full p-2 flex items-center justify-center text-blue-300 iconseffect">
-                                                <FaUser />
-                                            </div>
-                                            <input
-                                                type="text"
-                                                value={username}
-                                                placeholder="Username"
-                                                onChange={handleUsername}
-                                                className="w-80 bg-white-light py-2 px-12 rounded-full focus:bg-black-dark focus:outline-none focus:ring-1 focus:ring-neon-blue focus:drop-shadow-lg" />
-                                        </div>
-                                        <div className="relative">
-                                            <div className="absolute top-1 left-1 bg-white-medium rounded-full p-2 flex items-center justify-center text-blue-300 iconseffect">
-                                                <IoIosMail />
-                                            </div>
-                                            <input
-                                                type="text"
-                                                value={email}
-                                                placeholder="Email"
-                                                onChange={handleEmail}
-                                                className="w-80 bg-white-light py-2 px-12 rounded-full focus:bg-black-dark focus:outline-none focus:ring-1 focus:ring-neon-blue focus:drop-shadow-lg" />
-                                        </div>
-                                        <div className="relative">
-                                            <div className="absolute top-1 left-1 bg-white-medium rounded-full p-2 flex items-center justify-center text-blue-300">
-                                                <RiLockPasswordFill />
-                                            </div>
-                                            <input
-                                                type="password"
-                                                value={password}
-                                                placeholder="Password"
-                                                onChange={handlePassword}
-                                                className="w-80 bg-white-light py-2 px-12 rounded-full focus:bg-black-dark focus:outline-none focus:ring-1 focus:ring-neon-blue focus:drop-shadow-lg" />
-                                        </div>
-                                        <button type="submit" className="bg-gradient-to-r from-blue-400 to-cyan-200 w-80 font-semibold rounded-full py-2">Sign up</button>
-
-                                    </form>
-                                    <button className="close-modal" onClick={toggleModal}>
-                                        X
-                                    </button>
-                                </div>
+            <div className="grid grid-cols-2 gap-8  ml-14 ">
+                <div className="bg-slate-40 items-center gap-20 p-4 rounded-2xl shadow-2xl p-2.5 mt-5 pb-8">
+                    <div className="flex text-xl font-bold p-2 ">Create User</div>
+                    <form action="" className="text-sm space-y-6 text-black flex flex-col mx-2" onSubmit={handleSignin}>
+                        <div className="flex flex-col items-start justify-start mt-5 mx-2">
+                            <div className="mx-1 mb-1">
+                                First Name
                             </div>
-
+                            <input
+                                type="text"
+                                value={firstname}
+                                placeholder="First Name"
+                                onChange={handleFirstName}
+                                className="w-full bg-white-light py-2 px-4 rounded-full focus:bg-black-dark focus:outline-none focus:ring-1 focus:ring-neon-blue focus:drop-shadow-lg" />
                         </div>
-                    </div>
-                )}
+                        <div className="flex flex-col items-start justify-start mx-2">
+                            <div className="mx-1 mb-1">
+                                Last Name
+                            </div>
+                            <input
+                                type="text"
+                                value={lastname}
+                                placeholder="Last Name"
+                                onChange={handleLastName}
+                                className="w-full bg-white-light py-2 px-4 rounded-full focus:bg-black-dark focus:outline-none focus:ring-1 focus:ring-neon-blue focus:drop-shadow-lg"    >
+                            </input>
+                        </div>
+                        <div className="flex flex-col items-start justify-start mx-2">
+                            <div className="mx-1 mb-1">
+                                Username
+                            </div>
+                            <input
+                                type="text"
+                                value={username}
+                                placeholder="Username"
+                                onChange={handleUsername}
+                                className="w-full bg-white-light py-2 px-4 rounded-full focus:bg-black-dark focus:outline-none focus:ring-1 focus:ring-neon-blue focus:drop-shadow-lg"    >
+                            </input>
+                        </div>
+                        <div className="flex flex-col items-start justify-start mx-2">
+                            <div className="mx-1 mb-1">
+                                Email
+                            </div>
+                            <input
+                                type="text"
+                                value={email}
+                                placeholder="Email"
+                                onChange={handleEmail}
+                                className="w-full bg-white-light py-2 px-4 rounded-full focus:bg-black-dark focus:outline-none focus:ring-1 focus:ring-neon-blue focus:drop-shadow-lg"    >
+                            </input>
+                        </div>
+                        <div className="flex flex-col items-start justify-start mx-2">
+                            <div className="mx-1 mb-1">
+                                Password
+                            </div>
+                            <input
+                                type="password"
+                                value={password}
+                                placeholder="Password"
+                                onChange={handlePassword}
+                                className="w-full bg-white-light py-2 px-4 rounded-full focus:bg-black-dark focus:outline-none focus:ring-1 focus:ring-neon-blue focus:drop-shadow-lg"    >
+                            </input>
+                        </div>
+                        <div className="flex flex-col items-start justify-start mx-2">
+                            <div className="w-full mt-2 mb-1">
+                                <button type="submit" className="w-full bg-gradient-to-r from-blue-400 to-cyan-200 font-semibold rounded-full py-2">Add User</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div className="bg-slate-40 items-center gap-20 p-4 rounded-2xl shadow-2xl p-2.5 mt-5 ">
+                    <div className="flex text-xl font-bold p-2">Recent Activity</div>
+                </div>
             </div>
             <ToastContainer />
         </div>

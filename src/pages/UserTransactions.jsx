@@ -2,70 +2,81 @@ import sendbtn from "../assets/images/send.png";
 import receivebtn from "../assets/images/receive.png";
 import deposit from "../assets/images/deposit.png";
 import withdraw from "../assets/images/withdraw.png"
-import data from "../assets/data/bankUsers.json";
-import Deposit from "../components/Deposit.jsx";
-import Withdraw from "../components/Withdraw.jsx";
+import SendMoney from "../components/SendMoney";
+import data from "../assets/data/bankUsers.json"
 import { useState, useEffect } from "react";
+import ReceiveMoney from "../components/ReceiveMoney";
 
-export default function Transactions() {
-    const [showDepositForm, setShowDepositForm] = useState(false);
-    const [showWithdrawForm, setShowWithdrawForm] = useState(false);
+const formattedBalance = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'PHP',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+});
+
+export default function UserTransactions() {
+    const [users, setUsers] = useState(data);
+    const [show, setShow] = useState(false);
+    const [showSendForm, setShowSendForm] = useState(false);
+    const [showReceiveForm, setShowReceiveForm] = useState(false);
     const [loggedInUser, setLoggedInUser] = useState(null);
     useEffect(() => {
         const storedUser = JSON.parse(localStorage.getItem('loggedInUser'));
         setLoggedInUser(storedUser);
     }, []);
 
+
     return (
         <div className="">
             <div className="min-w-[165vmin] text-xl  p-2.5 ml-14 mr-14 mt-20">
                 <div className="font-bold ml-5">Transactions</div>
+                <div className="text-right text-sm pr-2"><span className="font-bold">Account Balance : </span>{formattedBalance.format(loggedInUser?.balance)}</div>
                 <div className="grid grid-cols-2 gap-8 mt-5">
-                    <div className="w-full bg-slate-40 items-center gap-20 p-4 rounded-2xl shadow-2xl p-2.5 pb-8">
+                    <div className="w-full bg-slate-40 items-center gap-20 p-4 rounded-2xl shadow-2xl p-2.5 pb-8 ">
                         <div className="flex text-xl font-bold p-2">
-                            {!showDepositForm ? (
+                            {!showSendForm ? (
                                 <img
-                                    src={deposit}
-                                    alt="Deposit"
-                                    onClick={() => setShowDepositForm(true)} // Show the form on click
+                                    src={sendbtn}
+                                    alt="Send Money"
+                                    onClick={() => setShowSendForm(true)} // Show the form on click
                                     className="cursor-pointer"
                                 />
                             ) : (
                                 <div className="relative w-full">
                                     <button
-                                        onClick={() => setShowDepositForm(false)} // Hide the form on close button click
+                                        onClick={() => setShowSendForm(false)} // Hide the form on close button click
                                         className="absolute top-2 right-2 bg-red-500 text-white rounded-full px-2 py-1 text-sm font-bold"
                                     >
                                         X
                                     </button>
-                                    <Deposit />
+                                    <SendMoney />
                                 </div>
                             )}
                         </div>
                     </div>
                     <div className="w-full bg-slate-40 items-center gap-20 p-4 rounded-2xl shadow-2xl p-2.5 pb-8">
-                        <div className="flex text-xl font-bold p-2">
-                            {!showWithdrawForm ? (
+                        <div className="flex text-xl font-bold p-2 ">
+                            {!showReceiveForm ? (
                                 <img
-                                    src={withdraw}
-                                    alt="Withdraw"
-                                    onClick={() => setShowWithdrawForm(true)} // Show the form on click
+                                    src={receivebtn}
+                                    alt="Receive Money"
+                                    onClick={() => setShowReceiveForm(true)} // Show the form on click
                                     className="cursor-pointer"
                                 />
                             ) : (
                                 <div className="relative w-full">
                                     <button
-                                        onClick={() => setShowWithdrawForm(false)} // Hide the form on close button click
+                                        onClick={() => setShowReceiveForm(false)} // Hide the form on close button click
                                         className="absolute top-2 right-2 bg-red-500 text-white rounded-full px-2 py-1 text-sm font-bold"
                                     >
                                         X
                                     </button>
-                                    <Withdraw />
+                                    <ReceiveMoney />
                                 </div>
                             )}
                         </div>
+                        <div className="flex text-xl font-bold p-2 "></div>
                     </div>
-
                 </div>
                 <div className="bg-slate-40 items-center gap-20 p-4 rounded-2xl shadow-2xl p-2.5 mt-5 ">
                     <div className="flex text-lg p-2"><span className="font-bold">Recent Activity</span></div>
@@ -87,6 +98,6 @@ export default function Transactions() {
                     </table>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

@@ -3,7 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import data from "../assets/data/bankUsers.json";
 
-export default function Dashboard() {
+export default function UserDashboard() {
     const [loggedInUser, setLoggedInUser] = useState(null); // Separate state for logged-in user
     const [users, setUsers] = useState(data.filter(user => user.type === 'User'));
 
@@ -39,36 +39,22 @@ export default function Dashboard() {
                 <div className="text-xs">You last logged in on <span>{currentDate} {currentTime}</span></div>
             </div>
             <div className="min-w-[165vmin] bg-slate-40 items-center gap-20 p-5 rounded-2xl shadow-2xl p-2.5 mt-5 ml-14">
-                <div className="text-xl font-bold p-2.5">Accounts</div>
-                <div className="text-xs p-2 flex item-start">
-                    <table className="p-6 divide-y divide-slate-200 min-w-[100%]">
-                        <thead >
-                            <tr className="">
-                                <th className="p-2.5">Name</th>
-                                <th className="p-2.5">Username</th>
-                                <th className="p-2.5">Email</th>
-                                <th className="p-2.5">Current Balance</th>
-                            </tr>
-                        </thead>
-                        <tbody className="mt-2">
-                            {users.map((u) => (
-                                <tr key={u.id} className="odd:bg-white even:bg-slate-50">
-                                    <td className="p-2.5">{u.firstname} {u.lastname}</td>
-                                    <td className="p-2.5">{u.username}</td>
-                                    <td className="p-2.5">{u.email}</td>
-                                    <td className="p-2.5">{formattedBalance.format(u.balance)}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                <div className="flex text-xl font-bold p-2.5">My Account</div>
+                <div className="text-l p-2 flex flex-col item-start">
+                    <div className="text-right"><span className="font-bold">Account Balance : </span>{formattedBalance.format(loggedInUser?.balance)}</div>
+                    <div className="font-bold text-l">{loggedInUser?.firstname} {loggedInUser?.lastname}</div>
+                    <div>{loggedInUser?.type}</div>
                 </div>
             </div>
-
             <div className="grid grid-cols-2 gap-8  ml-14">
                 <div className="bg-slate-40 items-center gap-20 p-4 rounded-2xl shadow-2xl p-2.5 mt-5 ">
                     <div className="flex text-xl font-bold p-2">Recent Activity</div>
                 </div>
+                <div className="bg-slate-40 items-center gap-20 p-4 rounded-2xl shadow-2xl p-2.5 mt-5">
+                    <div className="flex text-xl font-bold p-2">Recent Expenses</div>
+                </div>
             </div>
+
             <ToastContainer />
         </div>
     )

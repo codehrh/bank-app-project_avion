@@ -29,6 +29,9 @@ import BudgetTracker from './pages/BudgetApp.jsx';
 import { GrDashboard } from 'react-icons/gr';
 import Dashboard from "./pages/Dashboard.jsx";
 import { ToastContainer } from 'react-toastify';
+import MyAccount from './pages/MyAccount.jsx';
+import UserDashboard from './pages/UserDashboard.jsx';
+import UserTransactions from './pages/UserTransactions.jsx';
 
 // import RootLayout from './layouts/RootLayout.jsx';
 // import Menu from './components/Menu.jsx';
@@ -55,18 +58,28 @@ const router = createBrowserRouter([
         errorElement: <NotFound />,
       },
       {
+        path: "UserDashboard",
+        element: <UserDashboard />,
+        errorElement: <NotFound />,
+      },
+      {
         path: "Accounts",
         element: <Accounts />,
         errorElement: <NotFound />,
       },
       {
-        path: "DepositWithdraw",
-        element: <DepositWithdraw />,
+        path: "MyAccount",
+        element: <MyAccount />,
         errorElement: <NotFound />,
       },
       {
-        path: "TransferMoney",
-        element: <MoneyTransfer />,
+        path: "Transactions",
+        element: <Transactions />,
+        errorElement: <NotFound />,
+      },
+      {
+        path: "UserTransactions",
+        element: <UserTransactions />,
         errorElement: <NotFound />,
       },
       {

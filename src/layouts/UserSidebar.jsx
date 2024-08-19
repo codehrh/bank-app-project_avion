@@ -1,4 +1,4 @@
-import Logo from "../components/Logo";
+import Logo from "../DepositMoney.jsx/Logo";
 import { RxDashboard } from "react-icons/rx";
 import { IoCardSharp } from "react-icons/io5";
 import { GrTransaction } from "react-icons/gr";
@@ -9,6 +9,7 @@ import { NavLink } from "react-router-dom";
 import { FaHandHoldingUsd } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
 import { FaPiggyBank } from "react-icons/fa";
+import { MdOutlineLogout } from "react-icons/md";
 
 
 
@@ -18,8 +19,8 @@ import bankLogo from "../assets/images/dinerobankicon.png";
 const UserSidebar = () => {
 
     return (
-        <div className="flex items-start justify-start">
-            <div className="h-[100vh] w-1/7 shadow-2xl text-gray-600 text-[2.5vmin]">
+        <div className="flex items-start justify-start fixed">
+            <div className="h-[100vh] w-64 text-gray-600 text-[2.5vmin]">
                 <div className="flex items-start gap-[20px] p-5 pl-8 justify-start ">
                     <NavLink
                         to="/Home"
@@ -31,7 +32,7 @@ const UserSidebar = () => {
                 <ul className="flex flex-col gap-10 p-5 pl-8 ">
                     <li className="">
                         <NavLink
-                            to="Dashboard"
+                            to="UserDashboard"
                         >
                             <div className="flex items-center gap-x-2 justify-start">
                                 <RxDashboard />
@@ -41,32 +42,22 @@ const UserSidebar = () => {
                     </li>
                     <li className="">
                         <NavLink
-                            to="Accounts"
+                            to="MyAccount"
 
                         >
                             <div className="flex items-center gap-x-2 justify-start">
                                 <FaUserCircle />
-                                <span>Accounts</span>
+                                <span>My Account</span>
                             </div>
                         </NavLink>
                     </li>
                     <li className="">
                         <NavLink
-                            to="TransferMoney"
+                            to="UserTransactions"
                         >
                             <div className="flex items-center gap-x-2 justify-start">
                                 <FaMoneyBillTransfer />
-                                <span>Transfer Money</span>
-                            </div>
-                        </NavLink>
-                    </li>
-                    <li className="">
-                        <NavLink
-                            to="DepositWithdraw"
-                        >
-                            <div className="flex items-center gap-x-2 justify-start">
-                                <FaHandHoldingUsd />
-                                <span>Deposit/Withdraw</span>
+                                <span>Transactions</span>
                             </div>
                         </NavLink>
                     </li>
@@ -85,7 +76,7 @@ const UserSidebar = () => {
                             to="/"
                         >
                             <div className="flex items-center gap-x-2 justify-start mb-10">
-                                <FaUser />
+                                <MdOutlineLogout />
                                 <span>Logout</span>
                             </div>
                         </NavLink>

@@ -10,7 +10,7 @@ const formattedBalance = new Intl.NumberFormat('en-US', {
 });
 
 export default function BudgetTracker() {
-    const [users, setUsers] = useState(data.filter(user => user.type === 'user'));
+    const [users, setUsers] = useState(data.filter(user => user.type === 'User'));
     const [show, setShow] = useState(false);
     const [expenseDescription, setExpenseDescription] = useState("");
     const [expenseAmount, setExpenseAmount] = useState("");

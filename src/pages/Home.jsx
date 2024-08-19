@@ -35,15 +35,15 @@ export default function Home() {
 
     return (
 
-        < div className="mainContainer" >
+        < div className="min-h-screen flex" >
 
             <div className="leftContainer">
                 {renderSidebar()}
             </div>
 
             <div className="rightContainer">
-                <body className="flex flex-col items-start justify-start text-left h-screen bg-gradient-to-l from-sky-300 via-yellow-200 to-yellow-100">
-                    <div className="fixed top-4 right-4 flex items-start">
+                <body className="bg-cover min-h-screen flex flex-col items-start justify-start text-left bg-gradient-to-l from-sky-300 via-yellow-200 to-yellow-100 pb-10">
+                    <div className="absolute top-4 right-4 flex items-start">
                         <div><FaUserCircle size={33} color="#003566" /></div>
                         <div className="text-left pl-0.5 pr-1">
                             <div className="font-bold text-sm m-0 p-0">

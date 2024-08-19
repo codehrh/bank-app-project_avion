@@ -1,4 +1,4 @@
-import Logo from "../components/Logo";
+import Logo from "../DepositMoney.jsx/Logo";
 import { RxDashboard } from "react-icons/rx";
 import { IoCardSharp } from "react-icons/io5";
 import { GrTransaction } from "react-icons/gr";
@@ -22,8 +22,8 @@ const EmpSidebar = () => {
 
 
     return (
-        <div className="flex items-start justify-start">
-            <div className="h-[100vh] w-64 shadow-2xl text-gray-600 text-[2.5vmin]">
+        <div className="flex items-start justify-start fixed">
+            <div className="h-[100vh] w-64 text-gray-600 text-[2.5vmin]">
                 <div className="flex items-start gap-[20px] p-5 pl-8 justify-start ">
                     <NavLink
                         to="/Home"
@@ -56,21 +56,11 @@ const EmpSidebar = () => {
                     </li>
                     <li className="">
                         <NavLink
-                            to="TransferMoney"
+                            to="Transactions"
                         >
                             <div className="flex items-center gap-x-2 justify-start">
                                 <FaMoneyBillTransfer />
-                                <span>Transfer Money</span>
-                            </div>
-                        </NavLink>
-                    </li>
-                    <li className="">
-                        <NavLink
-                            to="DepositWithdraw"
-                        >
-                            <div className="flex items-center gap-x-2 justify-start">
-                                <FaHandHoldingUsd />
-                                <span>Deposit/Withdraw</span>
+                                <span>Transactions</span>
                             </div>
                         </NavLink>
                     </li>
