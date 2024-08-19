@@ -23,7 +23,7 @@ const UserSidebar = () => {
             <div className="h-[100vh] w-64 text-gray-600 text-[2.5vmin]">
                 <div className="flex items-start gap-[20px] p-5 pl-8 justify-start ">
                     <NavLink
-                        to="/Home"
+                        to="UserDashboard"
                     >
                         <h1 className="homelogo">Dinero <img src={bankLogo} alt="logo" className="logo-img"></img> Bank</h1>
                     </NavLink>
