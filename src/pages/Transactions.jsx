@@ -28,20 +28,24 @@ export default function Transactions() {
     // Handle deposit transactions
     const handleDeposit = () => {
         const newAmount = Number(depositAmount);
-        if (!selectedUser || newAmount <= 0) {
-            toast.error("Deposit Invalid");
+        if (!selectedUser) {
+            toast.error("Please select an account for the deposit.");
+            return;
+        }
+        if (newAmount <= 0) {
+            toast.error("Deposit amount must be greater than 0.");
             return;
         }
 
         const userInfo = findUser(selectedUser);
         if (!userInfo) {
-            toast.error("User does not exist");
+            toast.error("The selected user does not exist.");
             return;
         }
 
         const updatedUsers = users.map((u) => {
             if (u.username === selectedUser) {
-                toast.success(`${formattedBalance.format(newAmount)} has been deposited successfully!`);
+                toast.success(`${formattedBalance.format(newAmount)} has been deposited successfully to ${u.firstname} ${u.lastname}'s account!`);
                 setTransactions([...transactions, { user: selectedUser, type: 'Deposit', amount: formattedBalance.format(newAmount), date: new Date().toLocaleString() }]);
                 return { ...u, balance: u.balance + newAmount };
             }
@@ -57,25 +61,29 @@ export default function Transactions() {
     // Handle withdrawal transactions
     const handleWithdraw = () => {
         const newAmount = Number(withdrawAmount);
-        if (!selectedUser || newAmount <= 0) {
-            toast.error("Withdrawal Invalid");
+        if (!selectedUser) {
+            toast.error("Please select an account for the withdrawal.");
+            return;
+        }
+        if (newAmount <= 0) {
+            toast.error("Withdrawal amount must be greater than 0.");
             return;
         }
 
         const userInfo = findUser(selectedUser);
         if (!userInfo) {
-            toast.error("User does not exist");
+            toast.error("The selected user does not exist.");
             return;
         }
 
         const updatedUsers = users.map((u) => {
             if (u.username === selectedUser) {
                 if (u.balance >= newAmount) {
-                    toast.success(`${formattedBalance.format(newAmount)} has been withdrawn successfully!`);
+                    toast.success(`${formattedBalance.format(newAmount)} has been withdrawn successfully from ${u.firstname} ${u.lastname}'s account!`);
                     setTransactions([...transactions, { user: selectedUser, type: 'Withdraw', amount: formattedBalance.format(newAmount), date: new Date().toLocaleString() }]);
                     return { ...u, balance: u.balance - newAmount };
                 } else {
-                    toast.error("Not enough balance");
+                    toast.error(`Insufficient balance. ${u.firstname} ${u.lastname} only has ${formattedBalance.format(u.balance)}.`);
                 }
             }
             return u;
@@ -205,7 +213,7 @@ export default function Transactions() {
                 <div className="flex text-lg p-2">
                     <span className="font-bold">Recent Activity</span>
                 </div>
-                <table className="text-sm p-6 min-w-[100%]">
+                <table className="text-sm w-full table-auto">
                     <thead>
                         <tr>
                             <th className="p-2.5">Activity</th>
@@ -234,7 +242,7 @@ export default function Transactions() {
                 <div className="flex text-lg p-2">
                     <span className="font-bold">Account Balances</span>
                 </div>
-                <table className="text-sm p-6 min-w-[100%]">
+                <table className="text-sm w-full table-auto">
                     <thead>
                         <tr>
                             <th className="p-2.5">Account Name</th>
@@ -257,7 +265,11 @@ export default function Transactions() {
                     </tbody>
                 </table>
             </div>
-            <ToastContainer />
+
+            <div className="text-xs text-left">
+                <ToastContainer />
+            </div>
+
         </div>
     );
 }

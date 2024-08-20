@@ -100,7 +100,9 @@ export default function App() {
     <body>
       <div className="App">
         <RouterProvider router={router} />
-        <ToastContainer />
+        <div className="text-xs text-left">
+          <ToastContainer />
+        </div>
       </div>
     </body>
   );

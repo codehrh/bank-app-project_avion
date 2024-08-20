@@ -34,7 +34,7 @@ const UserSidebar = () => {
                         <NavLink
                             to="UserDashboard"
                         >
-                            <div className="flex items-center gap-x-2 justify-start">
+                            <div className="flex items-center gap-x-2 justify-start hover:text-blue-500">
                                 <RxDashboard />
                                 <span>Dashboard</span>
                             </div>
@@ -45,7 +45,7 @@ const UserSidebar = () => {
                             to="MyAccount"
 
                         >
-                            <div className="flex items-center gap-x-2 justify-start">
+                            <div className="flex items-center gap-x-2 justify-start hover:text-blue-500">
                                 <FaUserCircle />
                                 <span>My Account</span>
                             </div>
@@ -55,7 +55,7 @@ const UserSidebar = () => {
                         <NavLink
                             to="UserTransactions"
                         >
-                            <div className="flex items-center gap-x-2 justify-start">
+                            <div className="flex items-center gap-x-2 justify-start hover:text-blue-500">
                                 <FaMoneyBillTransfer />
                                 <span>Transactions</span>
                             </div>
@@ -65,7 +65,7 @@ const UserSidebar = () => {
                         <NavLink
                             to="BudgetApp"
                         >
-                            <div className="flex items-center gap-x-2 justify-start">
+                            <div className="flex items-center gap-x-2 justify-start hover:text-blue-500">
                                 <FaPiggyBank />
                                 <span>Budget App</span>
                             </div>
@@ -75,7 +75,7 @@ const UserSidebar = () => {
                         <NavLink
                             to="/"
                         >
-                            <div className="flex items-center gap-x-2 justify-start mb-10">
+                            <div className="flex items-center gap-x-2 justify-start mb-10 hover:text-blue-500">
                                 <MdOutlineLogout />
                                 <span>Logout</span>
                             </div>

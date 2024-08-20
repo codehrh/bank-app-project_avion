@@ -126,7 +126,9 @@ export default function Login() {
 
                 </div>
             </div>
-            <ToastContainer />
+            <div className="text-xs text-left">
+                <ToastContainer />
+            </div>
         </body>
     )
 }

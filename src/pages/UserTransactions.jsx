@@ -85,7 +85,7 @@ export default function UserTransactions() {
         };
         setTransactions([newTransaction, ...transactions]);
 
-        toast.success(`Php${amount.toFixed(2)} has been successfully ${isSend ? "sent" : "received"}!`);
+        toast.success(`${formattedBalance.format(amount.toFixed(2))} has been successfully ${isSend ? "sent" : "received"}!`);
 
         // Reset form fields
         setSendAmount("");
@@ -259,7 +259,9 @@ export default function UserTransactions() {
                     </table>
                 </div>
             </div>
-            <ToastContainer />
+            <div className="text-xs text-left">
+                <ToastContainer />
+            </div>
         </div>
     );
 }

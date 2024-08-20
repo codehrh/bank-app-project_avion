@@ -23,8 +23,7 @@ export default function Accounts() {
     const [password, setPass] = useState("");
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
-
-
+    const [recentActivities, setRecentActivities] = useState([]);
 
     const handleFirstName = (event) => {
         setFirstName(event.target.value);
@@ -42,7 +41,6 @@ export default function Accounts() {
         setEmail(event.target.value);
     };
 
-
     const userExists = (username) => {
         return users.some(user => user.username === username);
     };
@@ -51,21 +49,12 @@ export default function Accounts() {
         return users.some(user => user.email === email);
     };
 
-
-    const findUser = (name) => {
-        let foundUser = users.filter((user) => user.name == name);
-        return foundUser[0];
-    }
-
     const handleSignin = (event) => {
         event.preventDefault();
         const emailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!firstname) {
-            toast.error("Enter your first name!");
-        }
-        if (!lastname) {
-            toast.error("Enter your last name!");
-        }
+
+        if (!firstname) toast.error("Enter your first name!");
+        if (!lastname) toast.error("Enter your last name!");
         if (!username) {
             toast.error("Enter your username!");
         } else if (userExists(username)) {
@@ -80,7 +69,8 @@ export default function Accounts() {
         } else if (emailExists(email)) {
             toast.error("Email already exists. Use a different email!");
             return;
-        } if (!password) {
+        }
+        if (!password) {
             toast.error("Enter your password!");
         } else {
             const newUser = {
@@ -95,6 +85,14 @@ export default function Accounts() {
 
             setUsers([...users, newUser]);
 
+            // Log the activity
+            const newActivity = {
+                description: `Created new user [${newUser.username}].`,
+                timestamp: new Date().toLocaleString()
+            };
+
+            setRecentActivities([newActivity, ...recentActivities]); // Add new activity at the start
+
             setFirstName('');
             setLastName('');
             setUsername('');
@@ -105,13 +103,12 @@ export default function Accounts() {
         }
     };
 
-
     return (
         <div>
             <div className="min-w-[165vmin] bg-slate-40 items-center gap-20 p-5 rounded-2xl shadow-2xl p-2.5 mt-20 ml-14">
                 <div className="text-xl font-bold p-2.5">Accounts</div>
                 <div className="text-sm p-2 flex item-start">
-                    <table className="p-6 divide-y divide-slate-200 min-w-[100%]">
+                    <table className="w-full table-auto">
                         <thead >
                             <tr className="">
                                 <th className="p-2.5">Name</th>
@@ -122,7 +119,7 @@ export default function Accounts() {
                         </thead>
                         <tbody className="mt-2">
                             {users.map((u) => (
-                                <tr key={u.id} className="odd:bg-white even:bg-slate-50">
+                                <tr key={u.id} className="">
                                     <td className="p-2.5">{u.firstname} {u.lastname}</td>
                                     <td className="p-2.5">{u.username}</td>
                                     <td className="p-2.5">{u.email}</td>
@@ -136,7 +133,7 @@ export default function Accounts() {
             <div className="grid grid-cols-2 gap-8  ml-14 ">
                 <div className="bg-slate-40 items-center gap-20 p-4 rounded-2xl shadow-2xl p-2.5 mt-5 pb-8">
                     <div className="flex text-xl font-bold p-2 ">Create User</div>
-                    <form action="" className="text-sm space-y-6 text-black flex flex-col mx-2" onSubmit={handleSignin}>
+                    <form action="" className="text-xs space-y-6 text-black flex flex-col mx-1" onSubmit={handleSignin}>
                         <div className="flex flex-col items-start justify-start mt-5 mx-2">
                             <div className="mx-1 mb-1">
                                 First Name
@@ -203,11 +200,38 @@ export default function Accounts() {
                         </div>
                     </form>
                 </div>
-                <div className="bg-slate-40 items-center gap-20 p-4 rounded-2xl shadow-2xl p-2.5 mt-5 ">
-                    <div className="flex text-xl font-bold p-2">Recent Activity</div>
+                <div>
+                    <div className="bg-slate-40 items-center gap-20 p-4 rounded-2xl shadow-2xl p-2.5 mt-5 ">
+                        <div className="flex text-xl font-bold p-2">Recent Activity</div>
+                        <div className="text-sm p-2">
+                            {recentActivities.length === 0 ? (
+                                <div>No recent activity</div>
+                            ) : (
+                                <table className="w-full table-auto">
+                                    <thead>
+                                        <tr>
+                                            <th className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
+                                            <th className="px-3 py-2 text-lett text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {recentActivities.map((activity, index) => (
+                                            <tr key={index} className="mb-2">
+                                                <td className="px-3 py-2">{activity.description}</td>
+                                                <td className="px-3 py-2 text-left">({activity.timestamp})</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            )}
+                        </div>
+                    </div>
                 </div>
+
             </div>
-            <ToastContainer />
+            <div className="text-xs text-left">
+                <ToastContainer />
+            </div>
         </div>
     )
 }

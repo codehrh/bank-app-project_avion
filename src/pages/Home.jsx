@@ -56,7 +56,9 @@ export default function Home() {
                     <Outlet />
                 </body>
             </div>
-            <ToastContainer />
+            <div className="text-xs text-left">
+                <ToastContainer />
+            </div>
         </div >
 
     )

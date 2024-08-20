@@ -36,7 +36,7 @@ const EmpSidebar = () => {
                         <NavLink
                             to="Dashboard"
                         >
-                            <div className="flex items-center gap-x-2 justify-start">
+                            <div className="flex items-center gap-x-2 justify-start hover:text-blue-500">
                                 <RxDashboard />
                                 <span>Dashboard</span>
                             </div>
@@ -47,7 +47,7 @@ const EmpSidebar = () => {
                             to="Accounts"
 
                         >
-                            <div className="flex items-center gap-x-2 justify-start">
+                            <div className="flex items-center gap-x-2 justify-start hover:text-blue-500">
                                 <FaUserCircle />
                                 <span>Accounts</span>
                             </div>
@@ -57,7 +57,7 @@ const EmpSidebar = () => {
                         <NavLink
                             to="Transactions"
                         >
-                            <div className="flex items-center gap-x-2 justify-start">
+                            <div className="flex items-center gap-x-2 justify-start hover:text-blue-500">
                                 <FaMoneyBillTransfer />
                                 <span>Transactions</span>
                             </div>
@@ -67,7 +67,7 @@ const EmpSidebar = () => {
                         <NavLink
                             to="/"
                         >
-                            <div className="flex items-center gap-x-2 justify-start mb-10">
+                            <div className="flex items-center gap-x-2 justify-start mb-10 hover:text-blue-500">
                                 <MdOutlineLogout />
                                 <span>Logout</span>
                             </div>

@@ -41,7 +41,7 @@ export default function Dashboard() {
             <div className="min-w-[165vmin] bg-slate-40 items-center gap-20 p-5 rounded-2xl shadow-2xl p-2.5 mt-5 ml-14">
                 <div className="text-xl font-bold p-2.5">Accounts</div>
                 <div className="text-xs p-2 flex item-start">
-                    <table className="p-6 divide-y divide-slate-200 min-w-[100%]">
+                    <table className="p-6 min-w-[100%]">
                         <thead >
                             <tr className="">
                                 <th className="p-2.5">Name</th>
@@ -52,7 +52,7 @@ export default function Dashboard() {
                         </thead>
                         <tbody className="mt-2">
                             {users.map((u) => (
-                                <tr key={u.id} className="odd:bg-white even:bg-slate-50">
+                                <tr key={u.id} className="">
                                     <td className="p-2.5">{u.firstname} {u.lastname}</td>
                                     <td className="p-2.5">{u.username}</td>
                                     <td className="p-2.5">{u.email}</td>
@@ -69,7 +69,9 @@ export default function Dashboard() {
                     <div className="flex text-xl font-bold p-2">Recent Activity</div>
                 </div>
             </div>
-            <ToastContainer />
+            <div className="text-xs text-left">
+                <ToastContainer />
+            </div>
         </div>
     )
 }

@@ -273,6 +273,7 @@ export default function BudgetTracker() {
                                     <div className="grid grid-cols-2 gap-2">
                                         {budgetSummary.map((budget, index) => (
                                             <div
+
                                                 key={budget.name}
                                                 className={`border-2 border-blue-300 rounded-lg p-4 relative ${budgetSummary.length % 2 === 1 && index === budgetSummary.length - 1 ? 'col-span-2' : ''}`}
                                             >
@@ -307,6 +308,7 @@ export default function BudgetTracker() {
                                             </div>
                                         ))}
                                     </div>
+
                                 </div>
                                 <div className="flex items-center text-xl justify-end font-bold text-right p-2.5">
                                     <span className="text-right text-sm">Remaining Amount: {formattedBalance.format(totalRemainingAmount)}</span>
@@ -340,7 +342,9 @@ export default function BudgetTracker() {
                 </div>
             </div>
 
-            <ToastContainer />
+            <div className="text-xs text-left">
+                <ToastContainer />
+            </div>
         </div>
     );
 }

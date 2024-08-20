@@ -55,7 +55,9 @@ export default function UserDashboard() {
                 </div>
             </div>
 
-            <ToastContainer />
+            <div className="text-xs text-left">
+                <ToastContainer />
+            </div>
         </div>
     )
 }
