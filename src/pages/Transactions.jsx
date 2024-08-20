@@ -15,7 +15,7 @@ const formattedBalance = new Intl.NumberFormat('en-US', {
 export default function Transactions() {
     const [showDepositForm, setShowDepositForm] = useState(false);
     const [showWithdrawForm, setShowWithdrawForm] = useState(false);
-    const [users, setUsers] = useState(data.filter(user => user.type === 'user'));
+    const [users, setUsers] = useState(data.filter(user => user.type === 'User'));
     const [transactions, setTransactions] = useState([]);
     const [depositAmount, setDepositAmount] = useState("");
     const [withdrawAmount, setWithdrawAmount] = useState("");
@@ -40,8 +40,8 @@ export default function Transactions() {
         }
 
         const updatedUsers = users.map((u) => {
-            if (u.name === selectedUser) {
-                toast.success(`${depositAmount} has been deposited successfully!`);
+            if (u.username === selectedUser) {
+                toast.success(`${formattedBalance.format(newAmount)} has been deposited successfully!`);
                 setTransactions([...transactions, { user: selectedUser, type: 'Deposit', amount: formattedBalance.format(newAmount), date: new Date().toLocaleString() }]);
                 return { ...u, balance: u.balance + newAmount };
             }
@@ -69,9 +69,9 @@ export default function Transactions() {
         }
 
         const updatedUsers = users.map((u) => {
-            if (u.name === selectedUser) {
+            if (u.username === selectedUser) {
                 if (u.balance >= newAmount) {
-                    toast.success(`${withdrawAmount} has been withdrawn successfully!`);
+                    toast.success(`${formattedBalance.format(newAmount)} has been withdrawn successfully!`);
                     setTransactions([...transactions, { user: selectedUser, type: 'Withdraw', amount: formattedBalance.format(newAmount), date: new Date().toLocaleString() }]);
                     return { ...u, balance: u.balance - newAmount };
                 } else {
@@ -87,9 +87,9 @@ export default function Transactions() {
         setShowWithdrawForm(false);
     };
 
-    // Find user by name
-    const findUser = (name) => {
-        return users.find(user => user.name === name);
+    // Find user by username
+    const findUser = (username) => {
+        return users.find(user => user.username === username);
     };
 
     return (
@@ -127,7 +127,7 @@ export default function Transactions() {
                                         >
                                             <option value="">Select Account</option>
                                             {users.map((u) => (
-                                                <option key={u.id} value={u.id} >
+                                                <option key={u.username} value={u.username}>
                                                     {u.firstname} {u.lastname}
                                                 </option>
                                             ))}
@@ -135,7 +135,7 @@ export default function Transactions() {
                                         <br />
                                         <div className="mx-1">Amount: </div>
                                         <input
-                                            type="text"
+                                            type="number"
                                             value={depositAmount}
                                             className="w-full bg-white-light py-2 px-4 rounded-full focus:bg-black-dark focus:outline-none focus:ring-1 focus:ring-neon-blue focus:drop-shadow-lg"
                                             onChange={(event) => setDepositAmount(event.target.value)}
@@ -174,12 +174,12 @@ export default function Transactions() {
                                         <div className="mx-1 mt-2">Account Name: </div>
                                         <select
                                             value={selectedUser}
-                                            className="w-40 bg-white-50 border border-white-300 text-black-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
+                                            className="w-full bg-white-50 border border-white-300 text-black-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
                                             onChange={(event) => setSelectedUser(event.target.value)}
                                         >
                                             <option value="">Select Account</option>
                                             {users.map((u) => (
-                                                <option key={u.id} value={u.firstname}>
+                                                <option key={u.username} value={u.username}>
                                                     {u.firstname} {u.lastname}
                                                 </option>
                                             ))}
@@ -187,7 +187,7 @@ export default function Transactions() {
                                         <br />
                                         <div className="mx-1">Amount: </div>
                                         <input
-                                            type="text"
+                                            type="number"
                                             value={withdrawAmount}
                                             className="w-full bg-white-light py-2 px-4 rounded-full focus:bg-black-dark focus:outline-none focus:ring-1 focus:ring-neon-blue focus:drop-shadow-lg"
                                             onChange={(event) => setWithdrawAmount(event.target.value)}
@@ -224,6 +224,33 @@ export default function Transactions() {
                                     <td className="p-2.5">{transaction.user}</td>
                                     <td className="p-2.5">{transaction.type}</td>
                                     <td className="p-2.5">{transaction.date}</td>
+                                </tr>
+                            ))
+                        )}
+                    </tbody>
+                </table>
+            </div>
+            <div className="bg-slate-40 items-center gap-20 p-4 rounded-2xl shadow-2xl p-2.5 mt-5">
+                <div className="flex text-lg p-2">
+                    <span className="font-bold">Account Balances</span>
+                </div>
+                <table className="text-sm p-6 min-w-[100%]">
+                    <thead>
+                        <tr>
+                            <th className="p-2.5">Account Name</th>
+                            <th className="p-2.5">Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {users.length === 0 ? (
+                            <tr>
+                                <td className="p-2.5" colSpan="2">No accounts</td>
+                            </tr>
+                        ) : (
+                            users.map((user, index) => (
+                                <tr key={index}>
+                                    <td className="p-2.5">{user.firstname} {user.lastname}</td>
+                                    <td className="p-2.5">{formattedBalance.format(user.balance)}</td>
                                 </tr>
                             ))
                         )}
